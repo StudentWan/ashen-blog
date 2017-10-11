@@ -1,0 +1,4 @@
+client/build/*.js
+client/config/*.js
+admin/build/*.js
+admin/config/*.js
