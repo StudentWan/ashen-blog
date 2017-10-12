@@ -13,6 +13,9 @@
     "test": ""
   },
   "dependencies": {
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0"
   },
