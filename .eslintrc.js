@@ -19,6 +19,7 @@ module.exports = {
     // custom rules
     'semi': ['error', 'never'],
     'fecs-demo/esnext-ext': [0, ['js', 'es']],
+    'no-undef': 1,    
     'import/prefer-default-export': 1,
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
