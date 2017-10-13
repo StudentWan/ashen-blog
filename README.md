@@ -35,5 +35,12 @@ npm run dev-admin
 npm run build-admin
 ```
 
+### Server端
+
+#### dev
+
+```bash
+npm run dev-server
+```
 
 
