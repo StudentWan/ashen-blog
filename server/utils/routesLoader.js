@@ -8,7 +8,7 @@ import glob from 'glob'
 // TODO 这里是动态加载的模块，其实可以考虑静态加载，舍弃commonJS,优化时看
 export default function (dirname) {
     return new Promise((resolve, reject) => {
-        const routes = []
+        const routers = []
         glob(
             `${dirname}/*`,
             {ignore: '**/index.js'},
@@ -17,10 +17,10 @@ export default function (dirname) {
                     reject(err)
                 }
                 files.forEach(file => {
-                    const route = require(file)
-                    routes.push(route)
+                    const router = require(file)
+                    routers.push(router)
                 })
-                resolve(routes)
+                resolve(routers)
             }
         )
     })

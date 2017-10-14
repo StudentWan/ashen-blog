@@ -6,11 +6,11 @@
 import routesLoader from '../utils/routesLoader'
 
 export default function (app) {
-    routesLoader(`${__dirname}`).then(files => {
-        files.forEach(route => {
+    routesLoader(`${__dirname}`).then(routers => {
+        routers.forEach(router => {
             app
-                .use(route.routes())
-                .use(route.allowedMethods({
+                .use(router.routes())
+                .use(router.allowedMethods({
                     throw: true
                 }))
         })
