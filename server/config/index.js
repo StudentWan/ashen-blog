@@ -12,3 +12,5 @@ export const db = {
 }
 
 export const port = 3000
+
+export const baseApi = 'api'
