@@ -1,1 +1,21 @@
-$test-color: #f00;
+$white: #fff;
+$black: #000;
+$word: #354a5e;
+$base: #2d8cf0;
+
+@mixin nav-font {
+    font-size: 1.6rem;
+}
+
+@mixin flex($flow: row wrap, $justify: center, $align: center) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin fix($left: 0px, $top: 0px) {
+    position: fixed;
+    left: $left;
+    top: $top;
+}
