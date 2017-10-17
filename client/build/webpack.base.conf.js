@@ -23,7 +23,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      'iview$': 'iview'
+      '@': resolve('src')
     }
   },
   module: {
@@ -41,10 +41,6 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
-      },
-      {
-        test: '/iview.src.*?js$/',
-        loader: 'babel-loader'
       },
       {
         test: /\.js$/,

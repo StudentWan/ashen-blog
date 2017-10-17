@@ -1,10 +1,10 @@
 $white: #fff;
 $black: #000;
 $word: #354a5e;
-$base: #2d8cf0;
+$base: #e7731e;
 
-@mixin nav-font {
-    font-size: 1.6rem;
+@mixin chosen-item {
+    border-bottom: 3px solid $base;
 }
 
 @mixin flex($flow: row wrap, $justify: center, $align: center) {

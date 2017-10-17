@@ -1,5 +1,5 @@
 <template>
-    <div>Article</div>
+    <div>About</div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@
  */
 
 export default {
-    name: 'Article'
+    name: 'About'
 }
 </script>
 
@@ -17,4 +17,3 @@ export default {
 <style lang="scss" scoped>
 
 </style>
-

@@ -6,7 +6,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import 'iview/dist/styles/iview.css'
-import App from './App.vue'
+import App from '@/App'
 import router from './router/index'
 
 Vue.config.productionTip = false

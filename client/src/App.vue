@@ -1,15 +1,6 @@
 <template>
     <div id="app">
-        <div class="nav-bar">
-            <div class="site-nav">
-                <router-link to="/">文章</router-link>
-                <router-link to="/archive">归档</router-link>
-                <router-link to="/tag">标签</router-link>
-                <router-link to="/reading">阅读列表</router-link>
-                <router-link to="/about">关于我</router-link>
-            </div>
-            <div class="site-title"></div>
-        </div>
+        <header-nav></header-nav>
         <router-view/>
     </div>
 </template>
@@ -19,8 +10,14 @@
  * @author {benyuwan@gmail.com}
  * @file client根组件
  */
+
+import HeaderNav from '@/components/common/HeaderNav'
+
 export default {
-    name: 'app'
+    name: 'App',
+    components: {
+        HeaderNav
+    }
 }
 </script>
 
@@ -32,37 +29,22 @@ body {
 }
 
 html {
-    font-size: 62.5%
+    font: {
+        size: 62.5%;
+        family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    }
+    color: $word;
 }
 
 body * {
     box-sizing: border-box;
 }
 
-#app {
-    height: 100%;
+a {
+    text-decoration: none;
 }
 
-.nav-bar {
-    @include flex($justify: space-between);
-    @include fix;
-    padding: .5em;
-    height: 4em;
-    width: 100%;
-    @include nav-font;
-    border-bottom: 1px solid #e6e6e6;
-    .site-nav {
-        a {
-            color: $word;
-            padding-bottom: .2em;
-            margin: auto .3em;
-        }
-        a:hover {
-            border-bottom: 3px solid $base;
-        }
-        .router-link-exact-active {
-            border-bottom: 3px solid $base;
-        }
-    }
+#app {
+    height: 100%;
 }
 </style>
