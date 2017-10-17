@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "glob": "^7.1.2",
-    "iview": "^2.4.0",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-helmet": "^3.2.0",

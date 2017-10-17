@@ -35,8 +35,6 @@
                 <a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a>
             </li>
         </ul>
-        <Checkbox>Checkbox</Checkbox>
-
     </div>
 </template>
 
@@ -45,7 +43,6 @@
  * @author {benyuwan@gmail.com}
  * @file Hello World
  */
-import Checkbox from 'iview/src/components/checkbox'
 
 export default {
     name: 'HelloWorld',
@@ -53,9 +50,6 @@ export default {
         return {
             msg: 'Welcome to Your Vue.js App'
         }
-    },
-    components: {
-        Checkbox
     }
 }
 </script>
