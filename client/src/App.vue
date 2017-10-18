@@ -26,6 +26,7 @@ html,
 body {
     margin: 0;
     height: 100%;
+    min-width: 300px;
 }
 
 html {
@@ -42,6 +43,7 @@ body * {
 
 a {
     text-decoration: none;
+    color: $word;
 }
 
 #app {
