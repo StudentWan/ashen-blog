@@ -2,7 +2,6 @@ $white: #fff;
 $black: #000;
 $word: #354a5e;
 $base: #e7731e;
-
 @mixin chosen-item {
     border-bottom: 3px solid $base;
 }
@@ -18,4 +17,18 @@ $base: #e7731e;
     position: fixed;
     left: $left;
     top: $top;
+}
+
+@mixin clear-fix($element) {
+    #{$element}:before,
+    #{$element}:after {
+        content: "";
+        display: table;
+    }
+    #{$element}:after {
+        clear: both;
+    }
+    #{$element} {
+        *zoom: 1;
+    }
 }

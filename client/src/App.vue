@@ -1,7 +1,7 @@
 <template>
-    <div id="app">
-        <header-nav></header-nav>
-        <router-view/>
+    <div id="app" @click="sweepMask($event)">
+        <header-nav :maskFlag="maskFlag"></header-nav>
+        <router-view id="main" />
     </div>
 </template>
 
@@ -17,24 +17,34 @@ export default {
     name: 'App',
     components: {
         HeaderNav
+    },
+    data() {
+        return {
+            maskFlag: false
+        }
+    },
+    methods: {
+        sweepMask(e) {
+            if (e.target.id === 'main') {
+                this.maskFlag = !this.maskFlag
+            }
+        }
     }
 }
 </script>
 
 <style lang="scss">
-html,
-body {
-    margin: 0;
-    height: 100%;
-    min-width: 300px;
-}
-
 html {
     font: {
         size: 62.5%;
         family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
     }
     color: $word;
+}
+
+body {
+    margin: 0;
+    min-width: 300px;
 }
 
 body * {
@@ -47,6 +57,16 @@ a {
 }
 
 #app {
-    height: 100%;
+    // height: 100%;
+}
+
+#main {
+    font-size: 1.6rem;
+}
+
+@media screen and (max-width: 715px) {
+    #main {
+        margin-top: 4em;
+    }
 }
 </style>
