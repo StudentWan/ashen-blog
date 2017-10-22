@@ -1,5 +1,5 @@
 <template>
-    <div>About</div>
+    <div>leet code</div>
 </template>
 
 <script>
