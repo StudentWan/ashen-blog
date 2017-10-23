@@ -2,6 +2,7 @@
     <div id="app" @click="sweepMask($event)">
         <header-nav :maskFlag="maskFlag"></header-nav>
         <router-view id="main"/>
+        <foot></foot>
     </div>
 </template>
 
@@ -12,11 +13,13 @@
      */
 
     import HeaderNav from '@/components/common/HeaderNav'
+    import Foot from '@/components/common/Foot'
 
     export default {
         name: 'App',
         components: {
-            HeaderNav
+            HeaderNav,
+            Foot
         },
         data() {
             return {
@@ -38,17 +41,9 @@
     @font-face {
         font-family: 'Roboto Mono';
         font-style: normal;
-        font-weight: 400;
-        src: local('Roboto Mono'), local('RobotoMono-Regular'), url(./assets/font/hMqPNLsu_dywMa4C_DEpY6E8kM4xWR1_1bYURRojRGc.woff2) format('woff2');
+        font-weight: 200;
+        src: local('Roboto Mono Light for Powerline'), url(./assets/font/robotolight.ttf) format('ttf');
         unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-    }
-    /* latin */
-    @font-face {
-        font-family: 'Roboto Mono';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Roboto Mono'), local('RobotoMono-Regular'), url(./assets/font/hMqPNLsu_dywMa4C_DEpY4gp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
     }
 
     /* latin-ext */
@@ -122,6 +117,10 @@
 
     #main {
         font-size: 1.6rem;
+        padding: 2em 0 1em 0;
+        width: 95%;
+        max-width: 850px;
+        margin: auto;
     }
 
     @media screen and (max-width: 715px) {

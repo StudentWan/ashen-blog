@@ -135,7 +135,7 @@
         font-size: 1.6rem;
         padding: 4.5em 1.5em 4em 1.5em;
         background: #f9f9f9;
-        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.25);
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, .25);
         .mask-nav-list {
             li {
                 font-size: 1.4rem;
@@ -190,6 +190,5 @@
     .slide-fade-enter,
     .slide-fade-leave-to {
         transform: translateX(235px);
-        // opacity: 0;
     }
 </style>
