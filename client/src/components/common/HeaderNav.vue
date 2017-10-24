@@ -3,22 +3,22 @@
         <nav class="site-nav">
             <ul class="site-nav-list">
                 <li>
-                    <router-link to="/">文章</router-link>
+                    <router-link to="/articles">文章</router-link>
                 </li>
                 <li>
-                    <router-link to="/archive">归档</router-link>
+                    <router-link to="/archives">归档</router-link>
                 </li>
                 <li>
-                    <router-link to="/tag">标签</router-link>
+                    <router-link to="/tags">标签</router-link>
                 </li>
                 <li>
-                    <router-link to="/reading">阅读列表</router-link>
+                    <router-link to="/lists">阅读列表</router-link>
                 </li>
                 <li>
                     <router-link to="/about">关于我</router-link>
                 </li>
             </ul>
-            <router-link to="/" class="nav-title">
+            <router-link to="/articles" class="nav-title">
                 <img class="logo" src="../../assets/img/logo.png" alt="营火">
                 <span class="title">Ashen One</span>
             </router-link>
@@ -34,16 +34,16 @@
             <nav class="mask-nav" v-if="isMaskShow" @click="toggleMask">
                 <ul class="mask-nav-list">
                     <li>
-                        <router-link to="/">文章</router-link>
+                        <router-link to="/articles">文章</router-link>
                     </li>
                     <li>
-                        <router-link to="/archive">归档</router-link>
+                        <router-link to="/archives">归档</router-link>
                     </li>
                     <li>
-                        <router-link to="/tag">标签</router-link>
+                        <router-link to="/tags">标签</router-link>
                     </li>
                     <li>
-                        <router-link to="/reading">阅读列表</router-link>
+                        <router-link to="/lists">阅读列表</router-link>
                     </li>
                     <li>
                         <router-link to="/about">关于我</router-link>
@@ -62,7 +62,6 @@
      */
 
     export default {
-        name: 'HeaderNav',
         props: ['maskFlag'],
         data() {
             return {

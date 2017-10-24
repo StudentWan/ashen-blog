@@ -1,6 +1,6 @@
 <template>
     <div id="foot">
-        CopyRights滚粗，采用由Daniel Wan手工搭建的<a class="github" href="https://github.com/StudentWan/ashen-blog" target="_blank">Blog系统</a>.
+        <p>CopyRights滚粗，采用由Daniel Wan手工搭建的<a class="github" href="https://github.com/StudentWan/ashen-blog" target="_blank">Blog系统</a>.</p>
     </div>
 </template>
 
@@ -10,7 +10,6 @@
      * @file client footer
      */
     export default {
-        name: 'Foot'
     }
 </script>
 

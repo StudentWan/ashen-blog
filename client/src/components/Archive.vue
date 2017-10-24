@@ -48,7 +48,6 @@
  */
 
 export default {
-    name: 'Archive'
 }
 </script>
 

@@ -1,22 +1,13 @@
-<template>
-    <div>
-        Article
-    </div>
-</template>
+<template></template>
 
 <script>
-/**
- * @author {benyuwan@gmail.com}
- * @file Hello World
- */
+    /**
+     * @author {benyuwan@gmail.com}
+     * @file 特定文章组件
+     */
 
-export default {
-    name: 'Article'
-}
+    export default {
+    }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-
-</style>
-
+<script lang="scss" scoped></script>

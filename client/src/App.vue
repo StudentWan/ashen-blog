@@ -39,15 +39,6 @@
 <style lang="scss">
     /* latin-ext */
     @font-face {
-        font-family: 'Roboto Mono';
-        font-style: normal;
-        font-weight: 200;
-        src: local('Roboto Mono Light for Powerline'), url(./assets/font/robotolight.ttf) format('ttf');
-        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-    }
-
-    /* latin-ext */
-    @font-face {
         font-family: 'Source Sans Pro';
         font-style: normal;
         font-weight: 400;
@@ -109,6 +100,10 @@
     a {
         text-decoration: none;
         color: $word;
+    }
+
+    p {
+        margin: 0;
     }
 
     #app {

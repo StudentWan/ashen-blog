@@ -4,7 +4,7 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import Article from '@/components/Article'
+import ArticleList from '@/components/ArticleList'
 import Archive from '@/components/Archive'
 import Tag from '@/components/Tag'
 import ReadingList from '@/components/ReadingList'
@@ -15,29 +15,28 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/',
-            name: 'Article',
-            component: Article
+            path: '/articles',
+            component: ArticleList
         },
         {
-            path: '/archive',
-            name: 'Archive',
+            path: '/archives',
             component: Archive
         },
         {
-            path: '/tag',
-            name: 'Tag',
+            path: '/tags',
             component: Tag
         },
         {
-            path: '/reading',
-            name: 'ReadingList',
+            path: '/lists',
             component: ReadingList
         },
         {
             path: '/about',
-            name: 'About',
             component: About
+        },
+        {
+            path: '*',
+            redirect: '/articles'
         }
     ]
 })
