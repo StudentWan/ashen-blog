@@ -5,6 +5,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ArticleList from '@/components/ArticleList'
+import Article from '@/components/Article'
 import Archive from '@/components/Archive'
 import Tag from '@/components/Tag'
 import ReadingList from '@/components/ReadingList'
@@ -17,6 +18,10 @@ export default new Router({
         {
             path: '/articles',
             component: ArticleList
+        },
+        {
+            path: '/articles/:id',
+            component: Article
         },
         {
             path: '/archives',
