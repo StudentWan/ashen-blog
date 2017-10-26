@@ -1,0 +1,47 @@
+@import "font";
+@import "highlight";
+
+html {
+    font: {
+        size: 62.5%;
+        family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    }
+    color: $word;
+}
+
+body {
+    margin: 0;
+    min-width: 300px;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: $word;
+}
+
+p {
+    margin: 0;
+}
+
+#app {
+    // height: 100%;
+}
+
+#main {
+    font-size: 1.6rem;
+    padding: 2em 0 1em 0;
+    width: 95%;
+    max-width: 850px;
+    margin: auto;
+}
+
+@media screen and (max-width: 715px) {
+    #main {
+        margin-top: 4em;
+    }
+}
+

@@ -12,11 +12,12 @@
  */
 
 import parseMarkdown from '@/utils/parseMarkdown'
+import test from '../test'
 
 export default {
     data() {
         return {
-            content: '### 你好'
+            content: test.text
         }
     },
     methods: {

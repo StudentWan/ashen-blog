@@ -1,4 +1,5 @@
 client/build/*.js
 client/config/*.js
+client/src/test.js
 admin/build/*.js
 admin/config/*.js

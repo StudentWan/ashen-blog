@@ -1,8 +1,17 @@
-$white: #fff;
+// sass-resources-loader加载该文件，用于在每个文件导入mixin和variables
+// 但不可用于做全局样式文件，因为在每个文件中导入，路径并不统一
+
+// 基础配色
+$white: #fefdff;
 $black: #000;
-$word: #354a5e;
-$base: #e7731e;
-$special: #7f8c8d;
+
+// 系统配色
+$title: #2c3e50;
+$word: #34495e;
+$base: #f18f01;
+$quote: #99c24d;
+$special: #c1bfb5;
+
 @mixin chosen-item {
     border-bottom: 3px solid $base;
 }
@@ -33,4 +42,3 @@ $special: #7f8c8d;
         *zoom: 1;
     }
 }
-
