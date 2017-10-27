@@ -100,12 +100,13 @@
      */
 
     import parseMarkdown from '@/utils/parseMarkdown'
-    import test from '../test'
+    import zhaiyao from '../Zhaiyao'
+
 
     export default {
         data() {
             return {
-                content: test.text
+                content: zhaiyao.text
             }
         },
         methods: {
@@ -116,12 +117,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    .title:hover {
-        border-bottom: 2px solid $base;
+    // 覆盖article全局样式
+    h2 {
+        border-bottom: none;
+        padding: 0;
     }
 
-    .time {
-        color: $special;
+    .title {
+        color: $title;
+        padding-bottom: .3em;
+    }
+
+    .title:hover {
+        border-bottom: 2px solid $base;
     }
 
     .read-more {

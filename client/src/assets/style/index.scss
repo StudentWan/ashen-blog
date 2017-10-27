@@ -35,6 +35,50 @@ a {
     margin: auto;
 }
 
+// 文章解析的全局样式
+article {
+    h1 {
+        font-size: 1.7em;
+    }
+
+    h2 {
+        padding-bottom: .6em;
+        border-bottom: 1px solid $special;
+    }
+
+    h3:before, h4:before {
+        content: "# ";
+        color: $base;
+    }
+
+    h1, h2, h3, h4 {
+        color: $title;
+    }
+
+    .time {
+        color: $special;
+    }
+
+    .time:before {
+        content: "";
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        color: $base;
+    }
+
+    blockquote {
+        border-left: 3px solid $base;
+        margin: 2em 0;
+        padding-left: 1em;
+        font-weight: 600;
+    }
+}
+
 @media screen and (max-width: 715px) {
     #main {
         margin-top: 4em;

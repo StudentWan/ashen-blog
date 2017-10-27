@@ -51,7 +51,6 @@
                 </ul>
             </nav>
         </transition>
-        <div class="clearfix"></div>
     </header>
 </template>
 
@@ -153,7 +152,7 @@
                 @include chosen-item;
             }
         }
-        .router-link-exact-active {
+        .router-link-active {
             @include chosen-item;
         }
     }
