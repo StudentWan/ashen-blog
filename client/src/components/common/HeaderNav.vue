@@ -1,6 +1,10 @@
 <template>
     <header class="nav-container">
         <nav class="site-nav">
+            <router-link to="/articles" class="nav-title">
+                <img class="logo" src="../../assets/img/logo.png" alt="营火">
+                <span class="title">Ashen One</span>
+            </router-link>
             <ul class="site-nav-list">
                 <li>
                     <router-link to="/articles">文章</router-link>
@@ -18,10 +22,6 @@
                     <router-link to="/about">关于我</router-link>
                 </li>
             </ul>
-            <router-link to="/articles" class="nav-title">
-                <img class="logo" src="../../assets/img/logo.png" alt="营火">
-                <span class="title">Ashen One</span>
-            </router-link>
             <!-- nav-menu使用inline svg，作为菜单按钮，优化加载两张图片实现hover这一问题 -->
             <svg class="nav-menu" :class="{'menu-chosen': isMaskShow}" viewBox="0 0 1024 1024"
                  xmlns="http://www.w3.org/2000/svg" @click="toggleMask">
@@ -81,25 +81,25 @@
 </script>
 
 <style lang="scss" scoped>
+    .nav-container {
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    }
     .site-nav {
         position: relative;
+        margin: 0 auto;
         @include flex($justify: space-between);
         z-index: 2;
-        padding: 0.5em;
+        padding: .5em 0;
         height: 4em;
-        width: 100%;
+        width: 95%;
+        max-width: 850px;
         font-size: 1.6rem;
         background: $white;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
         .site-nav-list {
             @include flex;
         }
         .nav-title {
             @include flex;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
             .logo {
                 width: 2.5em;
                 height: 2.5em;
@@ -114,6 +114,10 @@
             }
         }
         .nav-menu {
+            position: absolute;
+            right: .5em;
+            top: 50%;
+            transform: translateY(-50%);
             visibility: hidden;
             width: 1.5em;
             height: 1.5em;
@@ -162,13 +166,17 @@
         fill: $base !important;
     }
 
-    @media screen and (max-width: 715px) {
+    @media screen and (max-width: 480px) {
         .site-nav {
             position: fixed;
             top: 0;
             left: 0;
+            right: 0;
+            width: 100%;
+            padding: .5em;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
             .site-nav-list {
-                visibility: hidden;
+                display: none;
             }
             .nav-menu {
                 visibility: visible;

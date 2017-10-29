@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="articlelist-container">
         <div class="article-list">
             <article>
                 <header>
