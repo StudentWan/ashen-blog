@@ -64,7 +64,7 @@
 <script>
     /**
      * @author {benyuwan@gmail.com}
-     * @file Hello World
+     * @file 归档组件
      */
 
     export default {}
