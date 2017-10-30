@@ -91,6 +91,7 @@
     table {
         width: 100%;
         border-collapse: collapse;
+        margin-bottom: 1em;
         th {
             padding: .5em 0;
             color: $title;
@@ -98,7 +99,7 @@
         }
         td {
             text-align: center;
-            font-size: 1.3rem;
+            /*font-size: 1.3rem;*/
             padding: 1em 0;
             border-bottom: 1px dotted $word;
         }

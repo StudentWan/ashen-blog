@@ -23,18 +23,13 @@
 <style lang="scss" scoped>
     h1 {
         padding-bottom: 1em;
-        /*margin-bottom: .5em;*/
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
     }
 
     ul {
         padding-left: 1.2em;
-        margin-bottom: 0;
         li {
             margin: 1em auto;
-        }
-        li:last-of-type {
-            margin-bottom: 0;
         }
     }
 </style>
