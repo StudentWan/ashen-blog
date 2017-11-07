@@ -1,0 +1,21 @@
+@import "font";
+
+html {
+    font: {
+        size: 62.5%;
+        family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    }
+    color: $word;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+
+
