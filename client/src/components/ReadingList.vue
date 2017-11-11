@@ -63,7 +63,7 @@
                 <td class="col-3"><star score="3.4"></star></td>
             </tr>
             <tr>
-                <td class="col-1">雾都孤儿</td>
+                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
                 <td class="col-3"><star score="3.4"></star></td>
             </tr>
@@ -89,7 +89,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
     table {
-        width: 100%;
+         width: 100%;
         border-collapse: collapse;
         margin-bottom: 1em;
         th {
