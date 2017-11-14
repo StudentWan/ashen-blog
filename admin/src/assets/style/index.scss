@@ -3,14 +3,16 @@
 html {
     font: {
         size: 62.5%;
-        family: "KaiShu", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+        family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
     }
     color: $word;
+    height: 100%;
 }
 
 body {
     margin: 0;
     height: 100%;
+    min-width: 1024px;
 }
 
 body * {
