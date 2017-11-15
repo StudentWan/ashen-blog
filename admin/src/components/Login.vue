@@ -54,10 +54,6 @@
         width: 100%;
         height: 3em;
         font-size: 2rem;
-        .logo {
-            width: 30px;
-            height: 30px;
-        }
     }
 
     form {
@@ -66,7 +62,8 @@
         height: 250px;
         border-top: 20px solid $base;
         border-radius: 5px;
-        box-shadow: 4px 4px 5px -3px rgba(0, 0, 0, .3);
+        // box-shadow: 4px 4px 5px -3px rgba(0, 0, 0, .3);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, .6);
         .slogan {
             font-size: 1.6rem;
             margin-bottom: 1em;
@@ -78,7 +75,7 @@
         input {
             font: {
                 size: 1rem;
-                family: Dosis;
+                family: Dosis, Arial, sans-serif;;
             }
             margin-bottom: 2em;
             width: 20em;
@@ -91,7 +88,7 @@
             color: $white;
             font: {
                 size: 1.6rem;
-                family: KaiShu;
+                family: KaiShu, Arial, sans-serif;
             }
             width: 6em;
             height: 2em;

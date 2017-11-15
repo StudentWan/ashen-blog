@@ -1,7 +1,9 @@
 <template>
     <div id="app">
-        <header-nav></header-nav>
-        <side-nav></side-nav>
+        <template v-if="!isLogin">
+            <header-nav></header-nav>
+            <side-nav></side-nav>
+        </template>
         <router-view/>
     </div>
 </template>
@@ -20,6 +22,11 @@
         components: {
             HeaderNav,
             SideNav
+        },
+        computed: {
+            isLogin() {
+                return this.$router.currentRoute.path === '/login'
+            }
         }
     }
 </script>

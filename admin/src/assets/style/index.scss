@@ -19,5 +19,15 @@ body * {
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    color: $word;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+}
+
 
 

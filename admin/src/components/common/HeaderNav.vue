@@ -1,12 +1,55 @@
-<template></template>
+<template>
+    <nav class="head-nav">
+        <div class="logo-container">
+            <img src="../../assets/img/logo.png" alt="" class="logo">
+        </div>
+        <div class="content-container">
+            <section>
+                <h4 class="title">无火的余灰</h4>
+                <img src="../../assets/img/subhead.png" alt="" class="subhead">
+            </section>
+            <router-link class="log-out" to="/"><img src="../../assets/img/logout.png" alt="" class="logo">登出</router-link>
+        </div>
+
+    </nav>
+</template>
 
 <script>
     /**
      * @author {benyuwan@gmail.com}
      * @file 顶部公用导航栏组件
      * */
-    export default {
-    }
+    export default {}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    .head-nav {
+        font-family: KaiShu, Arial, sans-serif;
+        @include flex($justify: flex-start);
+        font-size: 1.6rem;
+        height: 3em;
+        .logo-container {
+            @include flex;
+            width: 50px;
+            height: inherit;
+            //box-shadow: 4px 4px 5px -3px $base;
+        }
+        .content-container {
+            @include flex($justify: space-between);
+            padding: .5em;
+            height: 100%;
+            width: calc(100% - 50px);
+            border-bottom: 2px solid $base;
+            .log-out {
+                @include flex;
+            }
+        }
+
+        h4 {
+            margin: 0;
+        }
+        .subhead {
+            height: 16px;
+        }
+    }
+</style>
