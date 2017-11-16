@@ -1,5 +1,5 @@
 <template>
-    <div class="list-container main">
+    <div class="reading-list-container main">
 
     </div>
 </template>
@@ -7,9 +7,12 @@
 <script>
     /**
      * @author {benyuwan@gmail.com}
-     * @file 列表管理文章
+     * @file
      * */
+
     export default {}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

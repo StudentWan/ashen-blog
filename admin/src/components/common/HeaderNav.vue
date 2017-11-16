@@ -5,7 +5,10 @@
         </div>
         <div class="content-container">
             <section>
-                <h4 class="title">无火的余灰<img src="../../assets/img/subhead.png" alt="" class="subhead"></h4>
+                <h4 class="title">
+                    无火的余灰
+                    <!--<img src="../../assets/img/subhead.png" alt="" class="subhead">-->
+                </h4>
             </section>
             <router-link class="log-out" to="/">
                 <svg class="icon" aria-hidden="true">
@@ -34,9 +37,9 @@
         height: 3em;
         .logo-container {
             @include flex;
-            width: 50px;
+            width: 3em;
             height: inherit;
-            //box-shadow: 4px 4px 5px -3px $base;
+            border-bottom: 2px solid $word;
         }
         .content-container {
             @include flex($justify: space-between);
@@ -46,6 +49,7 @@
             border-bottom: 2px solid $base;
             .log-out {
                 @include flex;
+                color: $word;
             }
         }
 

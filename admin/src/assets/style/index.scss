@@ -28,7 +28,16 @@ body * {
 
 a {
     text-decoration: none;
-    color: $word;
+    //color: $word;
+}
+
+#app {
+    height: 100%;
+}
+
+.main {
+    margin-left: 3em;
+    font-size: 1.6rem;
 }
 
 .logo {
