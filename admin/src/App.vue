@@ -25,7 +25,8 @@
         },
         computed: {
             isLogin() {
-                return this.$router.currentRoute.path === '/login'
+                // 用$route控制路由
+                return this.$route.path === '/login'
             }
         }
     }

@@ -5,10 +5,14 @@
         </div>
         <div class="content-container">
             <section>
-                <h4 class="title">无火的余灰</h4>
-                <img src="../../assets/img/subhead.png" alt="" class="subhead">
+                <h4 class="title">无火的余灰<img src="../../assets/img/subhead.png" alt="" class="subhead"></h4>
             </section>
-            <router-link class="log-out" to="/"><img src="../../assets/img/logout.png" alt="" class="logo">登出</router-link>
+            <router-link class="log-out" to="/">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-tuichu"></use>
+                </svg>
+                <span>&nbsp;登出</span>
+            </router-link>
         </div>
 
     </nav>
@@ -46,10 +50,11 @@
         }
 
         h4 {
+            @include flex;
             margin: 0;
         }
         .subhead {
-            height: 16px;
+            width: 130px;
         }
     }
 </style>

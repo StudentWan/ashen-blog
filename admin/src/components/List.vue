@@ -1,6 +1,5 @@
 <template>
     <div class="list-container">
-        123
     </div>
 </template>
 
