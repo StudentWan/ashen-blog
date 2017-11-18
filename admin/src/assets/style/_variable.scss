@@ -8,6 +8,7 @@ $word: #34495e;
 $base: #f18f01;
 $quote: #99c24d;
 $special: #c1bfb5;
+$background: #ebeff5;
 
 @mixin flex($flow: row wrap, $justify: center, $align: center) {
     display: flex;

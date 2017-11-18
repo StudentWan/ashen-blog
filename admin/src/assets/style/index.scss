@@ -11,6 +11,7 @@ html {
     font: {
         size: 62.5%;
         family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+        weight: 400;
     }
     color: $word;
     height: 100%;
@@ -20,6 +21,7 @@ body {
     margin: 0;
     height: 100%;
     min-width: 1024px;
+    min-height: 900px;
 }
 
 body * {
@@ -36,8 +38,7 @@ a {
 }
 
 .main {
-    margin-left: 3em;
-    font-size: 1.6rem;
+    margin-left: 48px;
 }
 
 .logo {

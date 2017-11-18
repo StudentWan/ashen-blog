@@ -48,6 +48,7 @@ export default {}
 .link {
     @include flex($flow: column wrap);
     margin-bottom: 3em;
+    width: 100%;
     .icon {
         fill: $special;
         width: 1.5em;
@@ -58,6 +59,11 @@ export default {}
         font-size: 1rem;
         margin: 0;
     }
+
+    &:hover {
+        border-left: 2px solid $base;
+    }
+
     &:hover > .icon {
         fill: $base;
     }
@@ -67,6 +73,7 @@ export default {}
 }
 
 .router-link-active {
+    border-left: 2px solid $base;
     .icon {
         fill: $base;
     }

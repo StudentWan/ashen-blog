@@ -1,6 +1,66 @@
 <template>
     <div class="list-container main">
+        <h2>文章列表 / <span>ARTICLE LIST</span></h2>
+        <hr>
+        <main>
+            <ul class="list">
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+                <li class="article">
+                    <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
+                    <p>2017年9月30日17：38：42</p>
+                </li>
+            </ul>
+            <div class="editor">
 
+            </div>
+        </main>
     </div>
 </template>
 
@@ -12,4 +72,59 @@
     export default {}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    .list-container {
+        padding: .5em 6em;
+        height: calc(100% - 48px);
+        background: $background;
+        h2 {
+            font-weight: 400;
+            span {
+                color: $special;
+            }
+        }
+    }
+
+    main {
+        @include flex($justify: space-between);
+        height: calc(100% - 48px);
+        padding: 0 0 .5em 0;
+        .list {
+            width: 30%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            overflow: auto;
+            .article {
+                background: $white;
+                @include flex($flow: column wrap, $align: flex-start);
+                padding: .2em .5em;
+                border: .1em solid $special;
+                height: 6em;
+                max-width: 100%;
+                box-shadow: 0 3px 3px rgba(0, 0, 0, .6);
+                margin-bottom: 1.5em;
+                header {
+                    max-width: 100%;
+                    font-size: 1.6rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin-bottom: .2em;
+                }
+                p {
+                    margin: 0;
+                    color: $special;
+                }
+            }
+
+            // TODO: Last .article
+        }
+        .editor {
+            width: 68%;
+            height: 100%;
+            // background: $quote;
+        }
+    }
+</style>
