@@ -88,20 +88,22 @@
     main {
         @include flex($justify: space-between);
         height: calc(100% - 48px);
-        padding: 0 0 .5em 0;
+        padding: .5em 0;
         .list {
-            width: 30%;
+            width: 40%;
             height: 100%;
             margin: 0;
             padding: 0;
             list-style: none;
             overflow: auto;
+            padding: .5em .8em .5em 0;
             .article {
                 background: $white;
                 @include flex($flow: column wrap, $align: flex-start);
                 padding: .2em .5em;
-                border: .1em solid $special;
-                height: 6em;
+                //border: .1em solid $special;
+                border-left: none;
+                height: 5em;
                 max-width: 100%;
                 box-shadow: 0 3px 3px rgba(0, 0, 0, .6);
                 margin-bottom: 1.5em;
@@ -117,12 +119,15 @@
                     margin: 0;
                     color: $special;
                 }
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
 
             // TODO: Last .article
         }
         .editor {
-            width: 68%;
+            width: 58%;
             height: 100%;
             // background: $quote;
         }
