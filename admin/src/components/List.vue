@@ -69,7 +69,14 @@
      * @author {benyuwan@gmail.com}
      * @file 列表管理文章
      * */
-    export default {}
+
+    import SimpleMDE from 'simplemde'
+
+    export default {
+        mounted() {
+            const simplemde = new SimpleMDE({element: document.querySelector('.editor')})
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -101,15 +108,13 @@
                 background: $white;
                 @include flex($flow: column wrap, $align: flex-start);
                 padding: .2em .5em;
-                //border: .1em solid $special;
-                border-left: none;
+                border: .1em solid $special;
                 height: 5em;
                 max-width: 100%;
-                box-shadow: 0 3px 3px rgba(0, 0, 0, .6);
                 margin-bottom: 1.5em;
                 header {
                     max-width: 100%;
-                    font-size: 1.6rem;
+                    font-size: 1.3rem;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
