@@ -46,5 +46,32 @@ a {
     height: 30px;
 }
 
+.editor-toolbar {
+    @include flex($justify: flex-start);
+    height: 40px;
+    padding-left: 5px;
+    font-size: 1.6rem;
+    color: #adb5bc;
+    background: $white;
+    border-radius: 3px;
+    border: 1px solid $special;
+    a {
+        margin-right: 10px;
+        padding: .2em;
+        border-radius: 2px;
+        border: 1px solid $white;
+        &:hover {
+            border: 1px solid #adb5bc;
+        }
+    }
+    .separator {
+        font-style: normal;
+        margin-right: 10px;
+    }
+    .fa-question-circle {
+        color: #adb5bc;
+    }
+}
+
 
 
