@@ -75,7 +75,9 @@
                         <button id="submit" class="submit">发布文章</button>
                     </section>
                 </div>
-                <textarea id="content" class="content"></textarea>
+                <div class="content">
+                    <textarea></textarea>
+                </div>
             </div>
         </main>
     </div>
@@ -87,17 +89,24 @@
      * @file 列表管理文章
      * */
 
+    import 'font-awesome/css/font-awesome.min.css'
+    import 'simplemde/dist/simplemde.min.css'
     import SimpleMDE from 'simplemde'
 
     export default {
         data() {
             return {
                 tags: ['JavaScript', '前端页面'],
-                inputNow: false
+                inputNow: false,
+                simplemde: ''
             }
         },
         mounted() {
-            const simplemde = new SimpleMDE({element: document.querySelector('#content')})
+            // TODO: How come SimpleMDE didn't auto import style
+            this.simplemde = new SimpleMDE({
+                autoDownloadFontAwesome: false,
+                placeholder: 'Talk to me, Ashen one...'
+            })
         },
         methods: {
             toggleInput() {
@@ -177,6 +186,7 @@
             outline: none;
             border-bottom: 1px solid $special;
             background: none;
+            text-align: center;
         }
         .operate-bar {
             @include flex($justify: space-between);

@@ -53,7 +53,8 @@ a {
     font-size: 1.6rem;
     color: #adb5bc;
     background: $white;
-    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     border: 1px solid $special;
     a {
         margin-right: 10px;
@@ -72,6 +73,5 @@ a {
         color: #adb5bc;
     }
 }
-
 
 
