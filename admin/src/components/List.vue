@@ -75,9 +75,7 @@
                         <button id="submit" class="submit">发布文章</button>
                     </section>
                 </div>
-                <div class="content">
-                    <textarea></textarea>
-                </div>
+                <editor></editor>
             </div>
         </main>
     </div>
@@ -88,25 +86,22 @@
      * @author {benyuwan@gmail.com}
      * @file 列表管理文章
      * */
-
-    import 'font-awesome/css/font-awesome.min.css'
-    import 'simplemde/dist/simplemde.min.css'
-    import SimpleMDE from 'simplemde'
+    import Editor from '@/components/common/SimpleMDE'
 
     export default {
         data() {
             return {
                 tags: ['JavaScript', '前端页面'],
                 inputNow: false,
-                simplemde: ''
+                autosave: {
+                    enable: true,
+                    uniqueId: 'ashen',
+                    delay: 1000
+                }
             }
         },
-        mounted() {
-            // TODO: How come SimpleMDE didn't auto import style
-            this.simplemde = new SimpleMDE({
-                autoDownloadFontAwesome: false,
-                placeholder: 'Talk to me, Ashen one...'
-            })
+        components: {
+            Editor
         },
         methods: {
             toggleInput() {
@@ -124,9 +119,6 @@
 
 <style lang="scss" scoped>
     .list-container {
-        padding: .5em 6em;
-        height: calc(100% - 48px);
-        background: $background;
         h2 {
             font-weight: 400;
             span {
@@ -145,7 +137,7 @@
             margin: 0;
             list-style: none;
             overflow: auto;
-            padding: .5em .8em .5em 0;
+            padding: 0 .8em .5em 0;
             .article {
                 background: $white;
                 @include flex($flow: column wrap, $align: flex-start);
@@ -174,7 +166,8 @@
         .editor {
             width: 58%;
             height: 100%;
-            padding: .5em .8em .5em 0;
+            padding: 0 .8em .5em 0;
+            overflow: auto;
         }
         .title {
             margin-bottom: .3em;
@@ -259,6 +252,10 @@
                     }
                 }
             }
+        }
+
+        .content {
+            font-size: 1.6rem;
         }
     }
 </style>

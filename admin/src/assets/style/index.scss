@@ -39,6 +39,9 @@ a {
 
 .main {
     margin-left: 48px;
+    background: $background;
+    padding: .5em 6em;
+    height: calc(100% - 48px);
 }
 
 .logo {
@@ -73,5 +76,4 @@ a {
         color: #adb5bc;
     }
 }
-
 
