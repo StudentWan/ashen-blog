@@ -64,36 +64,28 @@
 </script>
 
 <style lang="scss" scoped>
-    .list {
-        width: 40%;
-        height: 100%;
-        margin: 0;
-        list-style: none;
-        overflow: auto;
-        padding: 0 .8em .5em 0;
-        .article {
-            background: $white;
-            @include flex($flow: column wrap, $align: flex-start);
-            padding: .2em .5em;
-            border: .1em solid $special;
-            height: 5em;
+    .article {
+        background: $white;
+        @include flex($flow: column wrap, $align: flex-start);
+        padding: .2em .5em;
+        border: .1em solid $special;
+        height: 5em;
+        max-width: 100%;
+        margin-bottom: 1.5em;
+        header {
             max-width: 100%;
-            margin-bottom: 1.5em;
-            header {
-                max-width: 100%;
-                font-size: 1.3rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                margin-bottom: .2em;
-            }
-            p {
-                margin: 0;
-                color: $special;
-            }
-            &:last-child {
-                margin-bottom: 0;
-            }
+            font-size: 1.3rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: .2em;
+        }
+        p {
+            margin: 0;
+            color: $special;
+        }
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 </style>

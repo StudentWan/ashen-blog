@@ -7,7 +7,7 @@
                     <use xlink:href="#icon-huiyuanbiaoqian"></use>
                 </svg>
                 <ul class="tags">
-                    <li v-for="tag in tags">{{ tag }}</li>
+                    <li v-for="(tag, index) in tags" class="tag">{{ tag }}<sup @click="deleteTag(index)">x</sup></li>
                 </ul>
                 <input type="text" class="tag-input" id="tag-input" v-if="inputNow" @keyup.enter="toggleInput">
                 <span class="tag-add" @click="toggleInput" v-else>+</span>
@@ -56,18 +56,15 @@
                     }
                 }
                 this.inputNow = !this.inputNow
+            },
+            deleteTag(tagIndex) {
+                this.tags.splice(tagIndex, 1)
             }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .editor {
-        width: 58%;
-        height: 100%;
-        padding: 0 .8em .5em 0;
-        overflow: auto;
-    }
     .title {
         margin-bottom: .3em;
         width: 100%;
@@ -97,12 +94,28 @@
                 list-style: none;
                 margin-right: 10px;
                 padding: 0;
-                li {
-                    margin-right: 5px;
+                .tag {
+                    margin-right: 10px;
                     /*text-decoration: underline;*/
                     color: $base;
+                    position: relative;
                     &:last-child {
-                        margin-right: 0;
+                        margin-right: 0px;
+                    }
+                    sup {
+                        display: inline-block;
+                        visibility: hidden;
+                        cursor: pointer;
+                        color: $white;
+                        line-height: 10px;
+                        text-align: center;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        background: $special;
+                    }
+                    &:hover > sup {
+                        visibility: visible;
                     }
                 }
             }
@@ -132,9 +145,10 @@
                 outline: none;
             }
             .delete {
+                margin-right: 10px;
                 color: $word;
                 border: 1px solid $word;
-                margin-right: 10px;
+                cursor: pointer;
                 &:hover {
                     color: $base;
                     border: 1px solid $base;
@@ -144,10 +158,11 @@
                 color: $white;
                 background: $base;
                 border: 1px solid $base;
+                cursor: pointer;
                 &:hover {
                     background: $white;
-                    color: $word;
-                    border: 1px solid $word;
+                    color: $base;
+                    border: 1px solid $base;
                 }
             }
         }

@@ -26,18 +26,25 @@
 </script>
 
 <style lang="scss" scoped>
-    .list-container {
-        h2 {
-            font-weight: 400;
-            span {
-                color: $special;
-            }
-        }
-    }
-
     main {
         @include flex($justify: space-between);
         height: calc(100% - 48px);
         padding: .5em 0;
+    }
+
+    .list {
+        width: 40%;
+        height: 100%;
+        margin: 0;
+        list-style: none;
+        overflow: auto;
+        padding: 0 .8em .5em 0;
+    }
+
+    .editor {
+        width: 58%;
+        height: 100%;
+        padding: 0 .8em .5em 0;
+        overflow: auto;
     }
 </style>

@@ -42,6 +42,12 @@ a {
     background: $background;
     padding: .5em 6em;
     height: calc(100% - 48px);
+    h2 {
+        font-weight: 400;
+        span {
+            color: $special;
+        }
+    }
 }
 
 .logo {
