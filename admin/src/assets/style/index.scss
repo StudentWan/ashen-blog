@@ -28,9 +28,12 @@ body * {
     box-sizing: border-box;
 }
 
+h3, h4, h5, h6 {
+    font-size: 1.6rem;
+}
+
 a {
     text-decoration: none;
-    //color: $word;
 }
 
 #app {
@@ -83,3 +86,33 @@ a {
     }
 }
 
+.btn-container {
+    button {
+        border-radius: 2px;
+        outline: none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    button:last-of-type {
+        margin-right: 0;
+    }
+    .delete {
+        margin-right: 10px;
+        color: $word;
+        border: 1px solid $word;
+        &:hover {
+            color: $base;
+            border: 1px solid $base;
+        }
+    }
+    .not-del {
+        color: $white;
+        background: $base;
+        border: 1px solid $base;
+        &:hover {
+            background: $white;
+            color: $base;
+            border: 1px solid $base;
+        }
+    }
+}

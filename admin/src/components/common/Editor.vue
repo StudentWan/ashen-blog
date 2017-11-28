@@ -14,7 +14,7 @@
             </section>
             <section class="btn-container">
                 <button id="delete" class="delete">删除文章</button>
-                <button id="submit" class="submit">发布文章</button>
+                <button id="submit" class="not-del">发布文章</button>
             </section>
         </div>
         <div class="content">
@@ -136,34 +136,6 @@
                 color: $special;
                 text-decoration: underline;
                 cursor: pointer;
-            }
-        }
-
-        .btn-container {
-            button {
-                border-radius: 2px;
-                outline: none;
-            }
-            .delete {
-                margin-right: 10px;
-                color: $word;
-                border: 1px solid $word;
-                cursor: pointer;
-                &:hover {
-                    color: $base;
-                    border: 1px solid $base;
-                }
-            }
-            .submit {
-                color: $white;
-                background: $base;
-                border: 1px solid $base;
-                cursor: pointer;
-                &:hover {
-                    background: $white;
-                    color: $base;
-                    border: 1px solid $base;
-                }
             }
         }
     }

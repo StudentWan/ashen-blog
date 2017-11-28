@@ -10,62 +10,86 @@
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="4.5"></star></td>
+                <td class="col-3">
+                    <star score="4.5"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="5"></star></td>
+                <td class="col-3">
+                    <star score="5"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="3"></star></td>
+                <td class="col-3">
+                    <star score="3"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="2"></star></td>
+                <td class="col-3">
+                    <star score="2"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="3.5"></star></td>
+                <td class="col-3">
+                    <star score="3.5"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="1.5"></star></td>
+                <td class="col-3">
+                    <star score="1.5"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="3.4"></star></td>
+                <td class="col-3">
+                    <star score="3.4"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="3.4"></star></td>
+                <td class="col-3">
+                    <star score="3.4"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="3.4"></star></td>
+                <td class="col-3">
+                    <star score="3.4"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="3.4"></star></td>
+                <td class="col-3">
+                    <star score="3.4"></star>
+                </td>
             </tr>
             <tr>
                 <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="3.4"></star></td>
+                <td class="col-3">
+                    <star score="3.4"></star>
+                </td>
             </tr>
             <tr>
-                 <td class="col-1">雾都孤儿</td>
+                <td class="col-1">雾都孤儿</td>
                 <td class="col-2">狄更斯</td>
-                <td class="col-3"><star score="3.4"></star></td>
+                <td class="col-3">
+                    <star score="3.4"></star>
+                </td>
             </tr>
         </table>
     </div>
@@ -89,7 +113,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
     table {
-         width: 100%;
+        width: 100%;
         border-collapse: collapse;
         margin-bottom: 1em;
         th {
