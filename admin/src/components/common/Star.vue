@@ -1,6 +1,7 @@
 <template>
     <ul class="star">
-        <span v-for="(itemClass,index) in itemClasses" :class="itemClass" class="star-item" key="index"></span>
+        <span v-for="(itemClass,index) in itemClasses" :class="itemClass" @mousemove="hovered($event)" :data-index="index" class="star-item"
+              :key="index"></span>
     </ul>
 </template>
 
@@ -11,7 +12,15 @@
      */
 
     export default {
+        data() {
+            return {
+                width: ''
+            }
+        },
         props: ['score'],
+        mounted() {
+            this.width = document.getElementsByClassName('star-item')[0].clientWidth
+        },
         computed: {
             itemClasses() {
                 const result = []
@@ -29,16 +38,22 @@
                 }
                 return result
             }
+        },
+        methods: {
+            hovered(evt) {
+                this.$emit('choose-star', {evt, width: this.width})
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .star{
+    .star {
         font-size: 1rem;
         padding: 0;
     }
-    .star-item{
+
+    .star-item {
         display: inline-block;
         background-repeat: no-repeat;
         width: 2em;
@@ -46,16 +61,20 @@
         margin-right: .5em;
         background-size: 100%;
     }
+
     .star-item:last-of-type {
         margin-right: 0;
     }
-    .star-item.on{
+
+    .star-item.on {
         background-image: url(../../assets/img/star-on.png);
     }
-    .star-item.half{
+
+    .star-item.half {
         background-image: url(../../assets/img/star-half.png);
     }
-    .star-item.off{
+
+    .star-item.off {
         background-image: url(../../assets/img/star-off.png);
     }
 </style>

@@ -1,17 +1,19 @@
 <template>
     <div class="reading-list-container main">
-        <div class="dialog-container" v-if="isDiaShow" @click="hideDialog($event)">
-            <section class="dialog">
-                <h5>输入书籍</h5>
-                <star score="5" id="rating"></star>
-                <input type="text" id="name" placeholder="输入书籍名称...">
-                <input type="text" id="author" placeholder="输入作者...">
-                <section class="btn-container">
-                    <button id="confirm" class="not-del">确认</button>
-                    <button id="cancel" class="delete">取消</button>
+        <transition name="slide-fade">
+            <div class="dialog-container" v-if="isDiaShow" @click="hideDialog($event)">
+                <section class="dialog">
+                    <h5>输入书籍</h5>
+                    <star :score="score" id="rating" @choose-star="chooseScore"></star>
+                    <input type="text" id="name" placeholder="输入书籍名称...">
+                    <input type="text" id="author" placeholder="输入作者...">
+                    <section class="btn-container">
+                        <button id="confirm" class="not-del">确认</button>
+                        <button id="cancel" class="delete">取消</button>
+                    </section>
                 </section>
-            </section>
-        </div>
+            </div>
+        </transition>
         <h2>阅读列表 / <span>READING LIST</span></h2>
         <hr>
         <main>
@@ -28,7 +30,9 @@
                 <tr v-for="{ name, author, rating } in books">
                     <td class="col-1">{{ name }}</td>
                     <td class="col-2">{{ author }}</td>
-                    <td class="col-3"><star :score="rating"></star></td>
+                    <td class="col-3">
+                        <star :score="rating"></star>
+                    </td>
                     <td class="col-4">
                         <section class="btn-container">
                             <button id="edit" class="not-del" @click="showDialog">编辑</button>
@@ -63,7 +67,8 @@
                         rating: 5
                     }
                 ],
-                isDiaShow: false
+                isDiaShow: false,
+                score: 0
             }
         },
         components: {
@@ -79,6 +84,15 @@
                     || evt.target.id === 'cancel') {
                     this.isDiaShow = false
                 }
+            },
+            chooseScore({evt, width}) {
+                const offsetX = evt.offsetX
+                // toFixed返回的是字符串...
+                let score = (parseInt(evt.target.dataset.index, 10) + parseFloat(offsetX / width)).toFixed(2)
+                if (score > 4.9) {
+                    score = 5
+                }
+                this.score = score
             }
         }
     }
@@ -90,6 +104,7 @@
         padding: .5em 0;
         overflow: auto;
     }
+
     .rd-list {
         width: 100%;
         border-collapse: collapse;
@@ -135,6 +150,13 @@
             h5 {
                 margin: 20px;
             }
+            .star {
+                margin-top: 0;
+                /deep/ .star-item {
+                    width: 1.5em;
+                    height: 1.5em;
+                }
+            }
             input {
                 margin-bottom: 15px;
                 width: 200px;
@@ -148,5 +170,17 @@
                 @include flex($justify: space-between);
             }
         }
+    }
+
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .6s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active for below version 2.1.8 */ {
+        transform: translateY(-900px);
+        opacity: 0;
     }
 </style>
