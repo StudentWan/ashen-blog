@@ -4,7 +4,7 @@
             <div class="dialog-container" v-if="isDiaShow" @click="hideDialog($event)">
                 <section class="dialog">
                     <h5>输入书籍</h5>
-                    <star :score="score" id="rating" @choose-star="chooseScore"></star>
+                    <star :score="score" id="score" @choose-star="chooseScore"></star>
                     <input type="text" id="name" placeholder="输入书籍名称...">
                     <input type="text" id="author" placeholder="输入作者...">
                     <section class="btn-container">
@@ -27,11 +27,11 @@
                     <th>评分</th>
                     <th>编辑/删除</th>
                 </tr>
-                <tr v-for="{ name, author, rating } in books">
+                <tr v-for="{ name, author, score } in books">
                     <td class="col-1">{{ name }}</td>
                     <td class="col-2">{{ author }}</td>
                     <td class="col-3">
-                        <star :score="rating"></star>
+                        <star :score="score"></star>
                     </td>
                     <td class="col-4">
                         <section class="btn-container">
@@ -59,12 +59,12 @@
                     {
                         name: '雾都孤儿',
                         author: '狄更斯',
-                        rating: 4
+                        score: 4
                     },
                     {
                         name: '93年',
                         author: '雨果',
-                        rating: 5
+                        score: 5
                     }
                 ],
                 isDiaShow: false,

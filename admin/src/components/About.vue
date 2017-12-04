@@ -4,7 +4,7 @@
         <hr>
         <main>
             <form action="javascript:void(0)" method="post">
-                <textarea name="about" class="about" id="about" placeholder="Say something about u, Ashen..."></textarea>
+                <textarea name="about" class="about" id="about" placeholder="Say something about urself, Ashen..."></textarea>
                 <section class="btn-container">
                     <button class="not-del" id="submit">提交修改</button>
                 </section>
