@@ -8,6 +8,10 @@ export const db = {
     port: '8889',
     user: 'root',
     password: 'root',
+    multipleStatements: true
+}
+
+export const dbName = {
     database: 'ashen_db'
 }
 

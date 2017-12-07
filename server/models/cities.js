@@ -7,7 +7,7 @@ import query from '../utils/query'
 
 class Cities {
     async find() {
-        return query('SELECT * FROM test_table')
+        return await query('SELECT * FROM USER')
     }
 }
 
