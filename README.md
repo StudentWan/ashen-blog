@@ -45,4 +45,8 @@ npm run build-admin
 npm run dev-server
 ```
 
+### api文档：
+
+[api文档](https://app.swaggerhub.com/apis/StudentWan/ashen-blog/1.0.0)
+
 

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.35)
 # Database: ashen_db
-# Generation Time: 2017-12-06 13:18:10 +0000
+# Generation Time: 2017-12-10 08:17:36 +0000
 # ************************************************************
 
 
@@ -23,8 +23,6 @@
 # Dump of table ABOUT
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `ABOUT`;
-
 CREATE TABLE `ABOUT` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `content` longtext,
@@ -36,14 +34,11 @@ CREATE TABLE `ABOUT` (
 # Dump of table ARTICLE
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `ARTICLE`;
-
 CREATE TABLE `ARTICLE` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL DEFAULT '',
   `tags` varchar(255) NOT NULL DEFAULT '',
   `upload_time` datetime NOT NULL,
-  `edit_time` datetime NOT NULL,
   `content` longtext NOT NULL,
   `is_published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
@@ -53,8 +48,6 @@ CREATE TABLE `ARTICLE` (
 
 # Dump of table RD_LIST
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `RD_LIST`;
 
 CREATE TABLE `RD_LIST` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -69,8 +62,6 @@ CREATE TABLE `RD_LIST` (
 # Dump of table TAGS
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `TAGS`;
-
 CREATE TABLE `TAGS` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tags` varchar(11) NOT NULL DEFAULT '',
@@ -81,8 +72,6 @@ CREATE TABLE `TAGS` (
 
 # Dump of table USER
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `USER`;
 
 CREATE TABLE `USER` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
