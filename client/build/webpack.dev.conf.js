@@ -32,6 +32,9 @@ module.exports = merge(baseWebpackConfig, {
       favicon: './favicon.ico',
       inject: true
     }),
-    new FriendlyErrorsPlugin()
+    new FriendlyErrorsPlugin(),
+    new webpack.ProvidePlugin({
+        axios: 'axios'
+    })
   ]
 })
