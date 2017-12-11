@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.35)
 # Database: ashen_db
-# Generation Time: 2017-12-10 08:17:36 +0000
+# Generation Time: 2017-12-11 09:35:53 +0000
 # ************************************************************
 
 
@@ -23,16 +23,29 @@
 # Dump of table ABOUT
 # ------------------------------------------------------------
 
+DROP TABLE IF EXISTS `ABOUT`;
+
 CREATE TABLE `ABOUT` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `content` longtext,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `ABOUT` WRITE;
+/*!40000 ALTER TABLE `ABOUT` DISABLE KEYS */;
+
+INSERT INTO `ABOUT` (`id`, `content`)
+VALUES
+	(1,'');
+
+/*!40000 ALTER TABLE `ABOUT` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table ARTICLE
 # ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `ARTICLE`;
 
 CREATE TABLE `ARTICLE` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -40,7 +53,7 @@ CREATE TABLE `ARTICLE` (
   `tags` varchar(255) NOT NULL DEFAULT '',
   `upload_time` datetime NOT NULL,
   `content` longtext NOT NULL,
-  `is_published` tinyint(1) NOT NULL,
+  `is_published` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -48,6 +61,8 @@ CREATE TABLE `ARTICLE` (
 
 # Dump of table RD_LIST
 # ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `RD_LIST`;
 
 CREATE TABLE `RD_LIST` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -62,6 +77,8 @@ CREATE TABLE `RD_LIST` (
 # Dump of table TAGS
 # ------------------------------------------------------------
 
+DROP TABLE IF EXISTS `TAGS`;
+
 CREATE TABLE `TAGS` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tags` varchar(11) NOT NULL DEFAULT '',
@@ -72,6 +89,8 @@ CREATE TABLE `TAGS` (
 
 # Dump of table USER
 # ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `USER`;
 
 CREATE TABLE `USER` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,

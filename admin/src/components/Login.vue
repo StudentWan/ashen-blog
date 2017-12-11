@@ -4,11 +4,11 @@
             <span>无火的余灰</span>
             <img class="logo" src="../assets/img/logo.png" alt="营火">
         </header>
-        <form action="javascript:void(0)" method="post">
+        <form>
             <span class="slogan">登登登登...录! <span>/ Login</span></span>
             <input type="text" id="user" placeholder="Username" v-model="username">
             <input type="password" id="password" placeholder="Password" v-model="password">
-            <button id="login" @click="goLog">登录</button>
+            <button id="login" @click="login">登录</button>
         </form>
         <footer>@Designed by Daniel Wan</footer>
     </div>
@@ -28,14 +28,14 @@
             }
         },
         methods: {
-            goLog() {
-                // 这个方法仅仅是做简单的验证
-                // TODO：JWT
-                if (this.username !== 'wanbenyu' || this.password !== '123') {
-                }
-                else {
-                    this.$router.push('/lists')
-                }
+            login() {
+                axios.post(
+                    'http://localhost:3000/api/v1/login',
+                    {
+                        username: this.username,
+                        password: this.password
+                    })
+                    .then(res => console.log(res))
             }
         }
     }
