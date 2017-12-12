@@ -1,6 +1,6 @@
 /**
  * @author {benyuwan@gmail.com}
- * @file login的controller
+ * @file 关于认证的controller
  */
 
 import jwt from 'jsonwebtoken'
