@@ -4,12 +4,12 @@
             <span>无火的余灰</span>
             <img class="logo" src="../assets/img/logo.png" alt="营火">
         </header>
-        <form>
+        <section class="form">
             <span class="slogan">登登登登...录! <span>/ Login</span></span>
             <input type="text" id="user" placeholder="Username" v-model="username">
             <input type="password" id="password" placeholder="Password" v-model="password">
             <button id="login" @click="login">登录</button>
-        </form>
+        </section>
         <footer>@Designed by Daniel Wan</footer>
     </div>
 </template>
@@ -19,6 +19,8 @@
      * @author {benyuwan@gmail.com}
      * @file admin端登录页
      */
+
+    import md5 from 'md5'
 
     export default {
         data() {
@@ -30,12 +32,19 @@
         methods: {
             login() {
                 axios.post(
-                    'http://localhost:3000/api/v1/login',
+                    '/api/v1/token',
                     {
                         username: this.username,
-                        password: this.password
+                        password: md5(this.password)
                     })
-                    .then(res => console.log(res))
+                    .then(res => {
+                        const data = res.data
+                        if (data.status) {
+                            localStorage.setItem('ashenToken', data.token)
+                            this.$router.push('/lists')
+                        }
+                    })
+                    .catch(err => alert(err))
             }
         }
     }
@@ -54,7 +63,7 @@
             font-size: 2rem;
         }
 
-        form {
+        .form {
             @include flex($flow: column wrap);
             width: 400px;
             height: 250px;

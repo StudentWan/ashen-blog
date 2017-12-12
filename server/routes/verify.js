@@ -1,19 +1,18 @@
 /**
  * @author {benyuwan@gmail.com}
- * @file 登录验证的路由文件
+ * @file 验证token的api
  */
 
 import Router from 'koa-router'
 import {baseApi} from '../config'
-import LoginController from '../controllers/login'
+import AuthController from '../controllers/authentication'
 
-const api = 'login'
+const api = 'verify'
 
 const router = new Router()
 
 router.prefix(`/${baseApi}/${api}`)
 
-router.post('/', LoginController.login)
+router.post('/', AuthController.isLogin)
 
 module.exports = router
-

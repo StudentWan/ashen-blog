@@ -7,17 +7,15 @@
             <section>
                 <h4 class="title">
                     无火的余灰
-                    <!--<img src="../../assets/img/subhead.png" alt="" class="subhead">-->
                 </h4>
             </section>
-            <router-link class="log-out" to="/">
+            <a class="log-out" @click="logOut">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-tuichu"></use>
                 </svg>
                 <span>&nbsp;登出</span>
-            </router-link>
+            </a>
         </div>
-
     </nav>
 </template>
 
@@ -26,7 +24,14 @@
      * @author {benyuwan@gmail.com}
      * @file 顶部公用导航栏组件
      * */
-    export default {}
+    export default {
+        methods: {
+            logOut() {
+                localStorage.removeItem('ashenToken')
+                this.$router.push('/')
+            }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -59,6 +64,9 @@
         }
         .subhead {
             width: 130px;
+        }
+        .log-out {
+            cursor: pointer;
         }
     }
 </style>

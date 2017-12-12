@@ -8,12 +8,18 @@ import bodyParser from 'koa-bodyparser'
 import Koa from 'koa'
 import logger from 'koa-logger'
 import helmet from 'koa-helmet'
+import cors from 'koa-cors'
 import routing from './routes/'
 import {port} from './config'
 
 const app = new Koa()
 
 app
+    .use(cors({
+        maxAge: 7 * 24 * 60 * 60,
+        credentials: true,
+        methods: 'GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE'
+    }))
     .use(logger())
     .use(bodyParser())
     .use(helmet())

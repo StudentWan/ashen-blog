@@ -18,3 +18,5 @@ export const dbName = {
 export const port = 3000
 
 export const baseApi = 'api/v1'
+
+export const secret = 'ashen-one'

@@ -9,28 +9,34 @@
 </template>
 
 <script>
-    /**
-     * @author {benyuwan@gmail.com}
-     * @file admin端根组件
-     */
+/**
+ * @author {benyuwan@gmail.com}
+ * @file admin端根组件
+ */
 
-    import HeaderNav from '@/components/common/HeaderNav'
-    import SideNav from '@/components/common/SideNav'
+import HeaderNav from '@/components/common/HeaderNav'
+import SideNav from '@/components/common/SideNav'
 
-    export default {
-        name: 'app',
-        components: {
-            HeaderNav,
-            SideNav
-        },
-        computed: {
-            isLogin() {
-                // 用$route控制路由
-                return this.$route.path === '/login'
-            }
+export default {
+    name: 'app',
+    data() {
+        return {
+            // 必须为其设置初始值，防止开始的时候渲染
+            isLogin: true
+        }
+    },
+    components: {
+        HeaderNav,
+        SideNav
+    },
+    watch: {
+        $route(val) {
+            this.isLogin = val.path === '/login'
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>
+
 </style>
