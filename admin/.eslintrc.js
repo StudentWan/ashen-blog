@@ -11,6 +11,9 @@ module.exports = {
     },
     extends: 'fecs-demo',
     // required to lint *.vue files
+    globals: {
+        'axios': true
+    },
     plugins: [
         'html'
     ],

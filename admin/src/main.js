@@ -19,32 +19,26 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 router.beforeEach((to, from, next) => {
     // redirect会重新进行路由守卫，next()不会
     axios.post(
-        '/api/v1/verify',
-        {
-            token: localStorage.ashenToken
-        }).then(res => {
-            if (res.data) {
-                // 已登录
-                const pathArr = ['/lists', '/tags', '/readinglists', '/about']
-                if (pathArr.indexOf(to.path) === -1) {
-                    next('lists')
-                }
-                else {
-                    next()
-                }
+            '/api/v1/verify', {
+                token: localStorage.ashenToken
+            })
+        .then(res => {
+            // 已登录
+            const pathArr = ['/lists', '/tags', '/readinglists', '/about']
+            if (pathArr.indexOf(to.path) === -1) {
+                next('lists')
+            } else {
+                next()
             }
-            else {
-                // 未登录
-                if (to.path !== '/login') {
-                    next('login')
-                }
-                else {
-                    next()
-                }
+        })
+        .catch(err => {
+            if (to.path !== '/login') {
+                next('login')
+            } else {
+                next()
             }
         })
 })
-
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

@@ -20,40 +20,26 @@ class AuthControllers {
         if (res) {
             if (password === res.password) {
                 const token = jwt.sign({
-                    exp: Date.now() + 24 * 60 * 60 * 1000
+                    exp: Math.floor(Date.now() / 1000) + 60 * 60 // 一小时
                 }, secret)
-                ctx.body = {
-                    status: true,
-                    token: token
-                }
+                ctx.body = token
+            } else {
+                ctx.throw(401, '密码错误')
             }
-            else {
-                ctx.body = {
-                    status: false
-                }
-            }
-        }
-        else {
-            ctx.body = {
-                status: false
-            }
+        } else {
+            ctx.throw(401, '用户名错误')
         }
     }
 
-    isLogin(ctx) {
-        if (ctx.request.body.token) {
-            const expireTime = jwt.verify(ctx.request.body.token, secret).exp
-
-            if (expireTime > Date.now()) {
-                ctx.body = true
+    isLogin(ctx, next) {
+        jwt.verify(ctx.request.body.token, secret, (err, decoded) => {
+            if (err) {
+                ctx.throw(401, err.message)
+            } else {
+                ctx.body = '验证通过'
             }
-            else {
-                ctx.body = false
-            }
-        }
-        else {
-            ctx.body = false
-        }
+        })
+        next()
     }
 }
 

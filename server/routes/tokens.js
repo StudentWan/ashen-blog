@@ -7,7 +7,7 @@ import Router from 'koa-router'
 import {baseApi} from '../config'
 import AuthController from '../controllers/authentication'
 
-const api = 'token'
+const api = 'tokens'
 
 const router = new Router()
 
