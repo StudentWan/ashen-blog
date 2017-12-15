@@ -9,7 +9,7 @@ import {
     secret
 } from '../config'
 
-class AuthControllers {
+class TokenControllers {
 
     async createToken(ctx) {
         const {
@@ -20,27 +20,22 @@ class AuthControllers {
         if (res) {
             if (password === res.password) {
                 const token = jwt.sign({
-                    exp: Math.floor(Date.now() / 1000) + 60 * 60 // 一小时
+                    exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60// 一小时
                 }, secret)
                 ctx.body = token
-            } else {
+            }
+            else {
                 ctx.throw(401, '密码错误')
             }
-        } else {
+        }
+        else {
             ctx.throw(401, '用户名错误')
         }
     }
 
-    isLogin(ctx, next) {
-        jwt.verify(ctx.request.body.token, secret, (err, decoded) => {
-            if (err) {
-                ctx.throw(401, err.message)
-            } else {
-                ctx.body = '验证通过'
-            }
-        })
-        next()
+    checkToken(ctx) {
+        ctx.body = '验证通过'
     }
 }
 
-export default new AuthControllers()
+export default new TokenControllers()

@@ -9,7 +9,7 @@ import path from 'path'
 import {db, dbName} from '../config/'
 
 let pool
-const sqlSource = fs.readFileSync(path.resolve(__dirname, '..', './static/ashen_db.sql'), 'utf-8')
+const sqlSource = fs.readFileSync(path.resolve(__dirname, '..', './sql/ashen_db.sql'), 'utf-8')
 const init = mysql.createConnection(db)
 
 init.connect()
