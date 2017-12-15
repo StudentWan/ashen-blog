@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.35)
 # Database: ashen_db
-# Generation Time: 2017-12-11 09:35:53 +0000
+# Generation Time: 2017-12-15 09:28:42 +0000
 # ************************************************************
 
 
@@ -51,7 +51,8 @@ CREATE TABLE `ARTICLE` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL DEFAULT '',
   `tags` varchar(255) NOT NULL DEFAULT '',
-  `upload_time` datetime NOT NULL,
+  `create_time` datetime NOT NULL,
+  `lastedit_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   `content` longtext NOT NULL,
   `is_published` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -99,6 +100,15 @@ CREATE TABLE `USER` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `USER` WRITE;
+/*!40000 ALTER TABLE `USER` DISABLE KEYS */;
+
+INSERT INTO `USER` (`id`, `user`, `password`)
+VALUES
+	(1,'admin','e5d2a815230449badccf00bc67436696');
+
+/*!40000 ALTER TABLE `USER` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 

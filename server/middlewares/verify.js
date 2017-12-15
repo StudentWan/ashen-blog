@@ -6,13 +6,13 @@
 import jwt from 'jsonwebtoken'
 import {secret} from '../config'
 
-export default function (ctx, next) {
+export default async function (ctx, next) {
     // 同步验证
     const auth = ctx.get('Authorization')
     const token = auth.split(' ')[1]
     try {
         jwt.verify(token, secret)
-        next()
+        await next()
     }
     catch (err) {
         ctx.throw(401, err)

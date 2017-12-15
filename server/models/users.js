@@ -1,6 +1,6 @@
 /**
  * @author {benyuwan@gmail.com}
- * @file user的model
+ * @file users的model
  */
 
 import query from '../utils/query'

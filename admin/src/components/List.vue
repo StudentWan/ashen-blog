@@ -1,50 +1,78 @@
 <template>
     <div class="list-container main">
-        <h2>文章列表 / <span>ARTICLE LIST</span></h2>
+        <h2>文章列表 /
+            <span>ARTICLE LIST</span>
+        </h2>
         <hr>
         <main>
-            <article-list></article-list>
+            <div class="article-list">
+                <section class="btn-container">
+                    <button id="add" class="not-del" @click="postArticle">新文章</button>
+                </section>
+                <article-list></article-list>
+            </div>
             <editor></editor>
         </main>
     </div>
 </template>
 
 <script>
-    /**
-     * @author {benyuwan@gmail.com}
-     * @file 列表管理文章
-     * */
-    import ArticleList from '@/components/common/ArticleList'
-    import Editor from '@/components/common/Editor'
+/**
+ * @author {benyuwan@gmail.com}
+ * @file 列表管理文章
+ * */
+import ArticleList from '@/components/common/ArticleList'
+import Editor from '@/components/common/Editor'
 
-    export default {
-        components: {
-            Editor,
-            ArticleList
+export default {
+    components: {
+        Editor,
+        ArticleList
+    },
+    methods: {
+        postArticle() {
+            axios.post(
+                '/api/v1/articles',
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.ashenToken}`
+                    }
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    alert(err.message)
+                })
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>
-    main {
-        @include flex($justify: space-between);
-        height: calc(100% - 48px);
-        padding: .5em 0;
-    }
+main {
+    @include flex($justify: space-between);
+    height: calc(100% - 48px);
+    padding: 0.5em 0;
+}
 
+.article-list {
+    width: 40%;
+    height: 100%;
+    overflow: auto;
+    padding: 0 0.8em 0.5em 0;
     .list {
-        width: 40%;
-        height: 100%;
-        margin: 0;
+        // margin: 0;
+        padding: 0;
         list-style: none;
-        overflow: auto;
-        padding: 0 .8em .5em 0;
     }
+}
 
-    .editor {
-        width: 58%;
-        height: 100%;
-        padding: 0 .8em .5em 0;
-        overflow: auto;
-    }
+.editor {
+    width: 58%;
+    height: 100%;
+    padding: 0 0.8em 0.5em 0;
+    overflow: auto;
+}
 </style>
