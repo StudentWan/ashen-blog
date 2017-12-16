@@ -1,12 +1,8 @@
 <template>
     <ul class="list">
-        <li class="article">
-            <header>浏览器渲染详细过程：重绘、重排和composite只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉只是冰山一觉</header>
-            <p>2017年9月30日17：38：42</p>
-        </li>
-        <li class="article">
-            <header>浏览器渲染详细过程：重绘、重排</header>
-            <p>2017年9月30日17：38：42</p>
+        <li class="article" v-for="{title, createTime} in articleList">
+            <header>{{ title }}</header>
+            <p>{{ createTime }}</p>
         </li>
     </ul>
 </template>
@@ -16,7 +12,27 @@
      * @author {benyuwan@gmail.com}
      * @file 文章列表组件
      * */
-    export default {}
+
+    import moment from 'moment'
+
+    moment.locale('zh-CN')
+    export default {
+        data() {
+            return {
+                articleList: []
+            }
+        },
+        created() {
+            axios.get('/api/v1/articles')
+                .then(res => {
+                    for (let article of res.data) {
+                        article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                    }
+                    this.articleList.push(...res.data)
+                })
+                .catch(err => alert(err))
+        }
+    }
 </script>
 
 <style lang="scss" scoped>

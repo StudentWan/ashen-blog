@@ -12,6 +12,10 @@ class ArticleControllers {
         ctx.body = res
     }
 
+    async getArticleList(ctx) {
+        ctx.body = await Article.getAllArticleInfo()
+    }
+
 }
 
 export default new ArticleControllers()

@@ -15,6 +15,7 @@ const router = new Router()
 router.prefix(`/${baseApi}/${api}`)
 
 router.post('/', verify, ArticleController.addArticle)
+router.get('/', ArticleController.getArticleList)
 
 
 module.exports = router

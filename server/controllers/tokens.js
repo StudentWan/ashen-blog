@@ -20,7 +20,7 @@ class TokenControllers {
         if (res) {
             if (password === res.password) {
                 const token = jwt.sign({
-                    exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60// 一小时
+                    exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60// 一天
                 }, secret)
                 ctx.body = token
             }

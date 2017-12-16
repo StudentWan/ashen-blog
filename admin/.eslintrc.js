@@ -31,6 +31,7 @@ module.exports = {
         'fecs-demo/esnext-ext': [0, ['js', 'es']],
         'no-undef': 1,
         'import/prefer-default-export': 1,
+        'camelcase': 0,
         // don't require .vue extension when importing
         'import/extensions': ['error', 'always', {
             'js': 'never',
