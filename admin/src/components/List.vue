@@ -9,7 +9,7 @@
                 <section class="btn-container">
                     <button id="add" class="not-del" @click="postArticle">新文章</button>
                 </section>
-                <article-list></article-list>
+                <article-list ref="articleList"></article-list>
             </div>
             <editor></editor>
         </main>
@@ -40,7 +40,8 @@ export default {
                     }
                 })
                 .then(res => {
-                    console.log(res)
+                    const updateId = res.data.insertId
+                    this.$refs.articleList.updateList(updateId)
                 })
                 .catch(err => {
                     alert(err.message)

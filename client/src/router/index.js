@@ -13,7 +13,7 @@ import About from '@/components/About'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     routes: [
         {
             path: '/articles',
@@ -45,3 +45,11 @@ export default new Router({
         }
     ]
 })
+
+router.beforeEach((to, from, next) => {
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+    next()
+})
+
+export default router

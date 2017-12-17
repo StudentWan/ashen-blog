@@ -16,6 +16,7 @@ router.prefix(`/${baseApi}/${api}`)
 
 router.post('/', verify, ArticleController.addArticle)
 router.get('/', ArticleController.getArticleList)
+router.get('/:id', ArticleController.getOneArticle)
 
 
 module.exports = router

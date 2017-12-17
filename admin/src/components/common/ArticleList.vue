@@ -8,56 +8,68 @@
 </template>
 
 <script>
-    /**
-     * @author {benyuwan@gmail.com}
-     * @file 文章列表组件
-     * */
+/**
+ * @author {benyuwan@gmail.com}
+ * @file 文章列表组件
+ * */
 
-    import moment from 'moment'
+import moment from 'moment'
 
-    moment.locale('zh-CN')
-    export default {
-        data() {
-            return {
-                articleList: []
-            }
-        },
-        created() {
-            axios.get('/api/v1/articles')
+moment.locale('zh-CN')
+export default {
+    data() {
+        return {
+            articleList: []
+        }
+    },
+    created() {
+        axios.get('/api/v1/articles')
+            .then(res => {
+                for (let article of res.data) {
+                    article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                }
+                this.articleList.push(...res.data)
+            })
+            .catch(err => alert(err))
+    },
+    methods: {
+        updateList(updateId) {
+            axios.get(`/api/v1/articles/${updateId}`)
                 .then(res => {
-                    for (let article of res.data) {
-                        article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
-                    }
-                    this.articleList.push(...res.data)
+                    const article = res.data[0]
+                    article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                    this.articleList.unshift(article)
                 })
                 .catch(err => alert(err))
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>
-    .article {
-        background: $white;
-        @include flex($flow: column wrap, $align: flex-start);
-        padding: .2em .5em;
-        border: .1em solid $special;
-        height: 5em;
+.article {
+    @include flex($flow: column wrap, $align: flex-start);
+    padding: 0.2em 0.5em;
+    margin-bottom: 1.5em;
+    height: 5em;
+    max-width: 100%;
+    background: $white;
+    border: 0.1em solid $special;
+    cursor: pointer;
+    header {
         max-width: 100%;
-        margin-bottom: 1.5em;
-        header {
-            max-width: 100%;
-            font-size: 1.3rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: .2em;
-        }
-        p {
-            margin: 0;
-            color: $special;
-        }
-        &:last-child {
-            margin-bottom: 0;
-        }
+        font-size: 1.3rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.2em;
     }
+    p {
+        margin: 0;
+        color: $special;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
 </style>

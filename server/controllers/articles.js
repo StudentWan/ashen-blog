@@ -13,7 +13,15 @@ class ArticleControllers {
     }
 
     async getArticleList(ctx) {
-        ctx.body = await Article.getAllArticleInfo()
+        ctx.body = await Article.getAllArticles()
+    }
+
+    async getOneArticle(ctx) {
+        const res = await Article.getOneArticle(ctx.params.id)
+        if (res.length === 0) {
+            ctx.throw(404, '没有找到到该文章！')
+        }
+        ctx.body = res
     }
 
 }
