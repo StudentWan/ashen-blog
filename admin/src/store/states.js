@@ -4,5 +4,7 @@
  */
 
 export default {
+    // 正在编辑的文章
+    article: ''
 }
 

@@ -3,7 +3,7 @@
  * @file vuex mutations
  */
 
-// export const testMutations = state => {
-//
-// }
+export function updateArticle(state, payload) {
+    state.article = payload.article
+}
 

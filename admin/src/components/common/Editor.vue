@@ -62,6 +62,11 @@ export default {
         deleteTag(tagIndex) {
             this.tags.splice(tagIndex, 1)
         }
+    },
+    computed: {
+        article() {
+            return this.$store.state.article
+        }
     }
 }
 </script>
