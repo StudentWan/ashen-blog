@@ -1,6 +1,6 @@
 <template>
     <div class="editor">
-        <input type="text" class="title" id="title">
+        <input type="text" class="title" id="title" v-model="title">
         <div class="operate-bar">
             <section class="tag-container">
                 <svg class="icon" aria-hidden="true">
@@ -37,7 +37,6 @@ import SimpleMDE from 'simplemde'
 export default {
     data() {
         return {
-            tags: ['JavaScript', '前端页面'],
             inputNow: false,
             simplemde: ''
         }
@@ -64,8 +63,32 @@ export default {
         }
     },
     computed: {
-        article() {
-            return this.$store.state.article
+        id() {
+            return this.$store.state.id
+        },
+        title: {
+            get() {
+                return this.$store.state.title
+            },
+            set(value) {
+                this.store.commit('updateTitle', value)
+            }
+        },
+        tags: {
+            get() {
+                return this.$store.getters.getTags
+            },
+            set(value) {
+                this.store.commit('updateTags', value.join(','))
+            }
+        },
+        content: {
+            get() {
+                return this.$store.state.content
+            },
+            set(value) {
+                this.$store.commit('updateContent', value)
+            }
         }
     }
 }

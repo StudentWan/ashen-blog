@@ -20,53 +20,54 @@
 </template>
 
 <script>
-    /**
-     * @author {benyuwan@gmail.com}
-     * @file 顶部公用导航栏组件
-     * */
-    export default {
-        methods: {
-            logOut() {
-                localStorage.removeItem('ashenToken')
-                this.$router.push('/')
-            }
+/**
+ * @author {benyuwan@gmail.com}
+ * @file 顶部公用导航栏组件
+ * */
+
+export default {
+    methods: {
+        logOut() {
+            localStorage.removeItem('ashenToken')
+            this.$router.push('/')
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>
-    .head-nav {
-        font-family: KaiShu, Arial, sans-serif;
-        @include flex($justify: flex-start);
-        font-size: 1.6rem;
-        height: 3em;
-        .logo-container {
-            @include flex;
-            width: 3em;
-            height: inherit;
-            border-bottom: 2px solid $word;
-        }
-        .content-container {
-            @include flex($justify: space-between);
-            padding: .5em;
-            height: 100%;
-            width: calc(100% - 50px);
-            border-bottom: 2px solid $base;
-            .log-out {
-                @include flex;
-                color: $word;
-            }
-        }
-
-        h4 {
-            @include flex;
-            margin: 0;
-        }
-        .subhead {
-            width: 130px;
-        }
+.head-nav {
+    font-family: KaiShu, Arial, sans-serif;
+    @include flex($justify: flex-start);
+    font-size: 1.6rem;
+    height: 3em;
+    .logo-container {
+        @include flex;
+        width: 3em;
+        height: inherit;
+        border-bottom: 2px solid $word;
+    }
+    .content-container {
+        @include flex($justify: space-between);
+        padding: 0.5em;
+        height: 100%;
+        width: calc(100% - 50px);
+        border-bottom: 2px solid $base;
         .log-out {
-            cursor: pointer;
+            @include flex;
+            color: $word;
         }
     }
+
+    h4 {
+        @include flex;
+        margin: 0;
+    }
+    .subhead {
+        width: 130px;
+    }
+    .log-out {
+        cursor: pointer;
+    }
+}
 </style>

@@ -3,7 +3,11 @@
  * @file vuex getters
  */
 
-// export const testGetters = state => {
-//
-// }
+export function getTags({tags}) {
+    if (tags.length !== 0) {
+        return tags.split(',')
+    }
+    return new Array(0)
+}
+
 

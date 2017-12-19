@@ -14,7 +14,7 @@
  * */
 
 import moment from 'moment'
-import {mapMutations} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 
 moment.locale('zh-CN')
 export default {
@@ -30,7 +30,7 @@ export default {
                     article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
                 }
                 this.articleList.push(...res.data)
-                this.updateEditing({article: this.articleList[0]})
+                this.updateStore(this.articleList[0])
             })
             .catch(err => alert(err))
     },
@@ -45,8 +45,11 @@ export default {
                 .catch(err => alert(err))
         },
         ...mapMutations({
-            updateEditing: 'updateArticle'
+            updateStore: 'updateArticle'
         })
+    },
+    computed: {
+        ...mapState(['id', 'title', 'tags', 'content'])
     }
 }
 </script>

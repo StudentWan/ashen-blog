@@ -1,6 +1,6 @@
 /**
  * @author {benyuwan@gmail.com}
- * @file vuex states
+ * @file vuex state
  */
 
 export default {

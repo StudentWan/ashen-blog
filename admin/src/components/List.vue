@@ -47,6 +47,11 @@ export default {
                     alert(err.message)
                 })
         }
+    },
+    computed: {
+        title() {
+            return this.$store.state.title
+        }
     }
 }
 </script>
