@@ -33,6 +33,7 @@
 import 'font-awesome/css/font-awesome.min.css'
 import 'simplemde/dist/simplemde.min.css'
 import SimpleMDE from 'simplemde'
+import {mapState} from 'vuex'
 
 export default {
     data() {
@@ -47,48 +48,46 @@ export default {
             placeholder: 'Talk to me, Ashen one...',
             spellChecker: false
         })
+        // 切换路由时可能出现content没有改变的情况，此时将content中保存的值赋给simplemde
+        this.simplemde.value(this.content)
     },
     methods: {
         toggleInput() {
             if (this.inputNow) {
                 const tagVal = document.getElementById('tag-input').value
-                if (tagVal) {
+                if (tagVal && this.tags.indexOf(tagVal) === -1) {
                     this.tags.push(tagVal)
+                    // 更新store中存储的tags信息，添加tag
+                    this.$store.commit('updateTags', this.tags.join(','))
                 }
             }
             this.inputNow = !this.inputNow
         },
         deleteTag(tagIndex) {
             this.tags.splice(tagIndex, 1)
+            // 更新store中存储的tags信息，删除tag
+            this.$store.commit('updateTags', this.tags.join(','))
         }
     },
     computed: {
-        id() {
-            return this.$store.state.id
-        },
+        // 利用computed，获取正在编辑的文章的信息
+        ...mapState(['id', 'content']),
         title: {
             get() {
                 return this.$store.state.title
             },
             set(value) {
-                this.store.commit('updateTitle', value)
+                this.$store.commit('updateTitle', value)
             }
         },
-        tags: {
-            get() {
-                return this.$store.getters.getTags
-            },
-            set(value) {
-                this.store.commit('updateTags', value.join(','))
-            }
-        },
-        content: {
-            get() {
-                return this.$store.state.content
-            },
-            set(value) {
-                this.$store.commit('updateContent', value)
-            }
+        tags() {
+            return this.$store.getters.getTags
+        }
+    },
+    watch: {
+        // 切换正在编辑的文章后，设置simplemde的内容
+        content(val) {
+            this.simplemde.value(this.content)
         }
     }
 }

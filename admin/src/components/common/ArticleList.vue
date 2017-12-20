@@ -1,6 +1,6 @@
 <template>
     <ul class="list">
-        <li class="article" v-for="{title, createTime} in articleList">
+        <li class="article" :class="{active: activeIndex === index, published: isPublished === 1}" v-for="{title, createTime, isPublished},index in articleList" @click="select(index)">
             <header>{{ title }}</header>
             <p>{{ createTime }}</p>
         </li>
@@ -14,13 +14,14 @@
  * */
 
 import moment from 'moment'
-import {mapMutations, mapState} from 'vuex'
+import {mapMutations} from 'vuex'
 
 moment.locale('zh-CN')
 export default {
     data() {
         return {
-            articleList: []
+            articleList: [],
+            activeIndex: ''
         }
     },
     created() {
@@ -30,9 +31,15 @@ export default {
                     article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
                 }
                 this.articleList.push(...res.data)
-                this.updateStore(this.articleList[0])
+                // 如果有查询到文章，则将第一篇更新为正在编辑的文章
+                if (this.articleList.length !== 0) {
+                    this.updateArticle(this.articleList[0])
+                    this.activeIndex = 0
+                }
             })
-            .catch(err => alert(err))
+            .catch(err => {
+                alert(err)
+            })
     },
     methods: {
         updateList(updateId) {
@@ -41,15 +48,18 @@ export default {
                     const article = res.data[0]
                     article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
                     this.articleList.unshift(article)
+                    this.activeIndex++
                 })
                 .catch(err => alert(err))
         },
-        ...mapMutations({
-            updateStore: 'updateArticle'
-        })
-    },
-    computed: {
-        ...mapState(['id', 'title', 'tags', 'content'])
+        select(index) {
+            // 选择需要编辑的文章
+            this.activeIndex = index
+            this.updateArticle(this.articleList[index])
+        },
+        ...mapMutations([
+            'updateArticle'
+        ])
     }
 }
 </script>
@@ -79,5 +89,13 @@ export default {
     &:last-child {
         margin-bottom: 0;
     }
+}
+
+.active {
+    border: 1px solid $base;
+}
+
+.published {
+    border-right: 4px solid $base;
 }
 </style>

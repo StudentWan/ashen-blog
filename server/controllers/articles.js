@@ -23,7 +23,6 @@ class ArticleControllers {
         }
         ctx.body = res
     }
-
 }
 
 export default new ArticleControllers()
