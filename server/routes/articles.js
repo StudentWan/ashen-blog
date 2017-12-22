@@ -15,6 +15,7 @@ const router = new Router()
 router.prefix(`/${baseApi}/${api}`)
 
 router.post('/', verify, ArticleController.addArticle)
+router.put('/', verify, ArticleController.autoSaveArticle)
 router.get('/', ArticleController.getArticleList)
 router.get('/:id', ArticleController.getOneArticle)
 

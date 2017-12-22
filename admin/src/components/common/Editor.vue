@@ -70,8 +70,13 @@ export default {
             this.tags.splice(tagIndex, 1)
             this.autoSave()
         },
-        autoSave: debounce(evt => {
-
+        autoSave: debounce(function () {
+            this.$store.dispatch('saveArticle', {
+                id: this.id,
+                title: this.title,
+                tags: this.tags.join(','),
+                content: this.simplemde.value()
+            })
         }, 1000),
         monitorChange(evt) {
             if (evt.target.id === 'title' || evt.target.tagName === 'TEXTAREA') {

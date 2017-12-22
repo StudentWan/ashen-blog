@@ -23,6 +23,12 @@ class ArticleControllers {
         }
         ctx.body = res
     }
+
+    async autoSaveArticle(ctx) {
+        // TODO, 更新文章
+        // 注意对摘要的划分
+        ctx.body = 1
+    }
 }
 
 export default new ArticleControllers()
