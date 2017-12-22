@@ -1,5 +1,5 @@
 <template>
-    <div class="editor">
+    <div class="editor" @input="monitorChange($event)">
         <input type="text" class="title" id="title" v-model="title">
         <div class="operate-bar">
             <section class="tag-container">
@@ -7,11 +7,11 @@
                     <use xlink:href="#icon-huiyuanbiaoqian"></use>
                 </svg>
                 <ul class="tags">
-                    <li v-for="(tag, index) in tags" class="tag">{{ tag }}
+                    <li v-for="tag, index in tags" class="tag" :key="index">{{ tag }}
                         <sup @click="deleteTag(index)">x</sup>
                     </li>
                 </ul>
-                <input type="text" class="tag-input" id="tag-input" v-if="inputNow" @keyup.enter="toggleInput">
+                <input type="text" class="tag-input" id="tag-input" v-if="inputNow" @keyup.enter="toggleInput" @change="autoSave">
                 <span class="tag-add" @click="toggleInput" v-else>+</span>
             </section>
             <section class="btn-container">
@@ -34,11 +34,14 @@ import 'font-awesome/css/font-awesome.min.css'
 import 'simplemde/dist/simplemde.min.css'
 import SimpleMDE from 'simplemde'
 import {mapState} from 'vuex'
+import debounce from 'lodash.debounce'
 
 export default {
     data() {
         return {
             inputNow: false,
+            title: '',
+            tags: '',
             simplemde: ''
         }
     },
@@ -48,8 +51,10 @@ export default {
             placeholder: 'Talk to me, Ashen one...',
             spellChecker: false
         })
-        // 切换路由时可能出现content没有改变的情况，此时将content中保存的值赋给simplemde
-        this.simplemde.value(this.content)
+        // 切换路由时可能出现id没有改变的情况，此时将store中保存的值赋给data的属性
+        this.title = this.$store.state.title
+        this.tags = this.$store.getters.getTags
+        this.simplemde.value(this.$store.state.content)
     },
     methods: {
         toggleInput() {
@@ -57,37 +62,33 @@ export default {
                 const tagVal = document.getElementById('tag-input').value
                 if (tagVal && this.tags.indexOf(tagVal) === -1) {
                     this.tags.push(tagVal)
-                    // 更新store中存储的tags信息，添加tag
-                    this.$store.commit('updateTags', this.tags.join(','))
                 }
             }
             this.inputNow = !this.inputNow
         },
         deleteTag(tagIndex) {
             this.tags.splice(tagIndex, 1)
-            // 更新store中存储的tags信息，删除tag
-            this.$store.commit('updateTags', this.tags.join(','))
+            this.autoSave()
+        },
+        autoSave: debounce(evt => {
+
+        }, 1000),
+        monitorChange(evt) {
+            if (evt.target.id === 'title' || evt.target.tagName === 'TEXTAREA') {
+                this.autoSave()
+            }
         }
     },
     computed: {
-        // 利用computed，获取正在编辑的文章的信息
-        ...mapState(['id', 'content']),
-        title: {
-            get() {
-                return this.$store.state.title
-            },
-            set(value) {
-                this.$store.commit('updateTitle', value)
-            }
-        },
-        tags() {
-            return this.$store.getters.getTags
-        }
+        // 利用computed，获取正在编辑的文章的id
+        ...mapState(['id'])
     },
     watch: {
         // 切换正在编辑的文章后，设置simplemde的内容
-        content(val) {
-            this.simplemde.value(this.content)
+        id(val) {
+            this.title = this.$store.state.title
+            this.tags = this.$store.getters.getTags
+            this.simplemde.value(this.$store.state.content)
         }
     }
 }
