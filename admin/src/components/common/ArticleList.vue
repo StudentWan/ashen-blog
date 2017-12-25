@@ -14,14 +14,14 @@
  * */
 
 import moment from 'moment'
-import {mapMutations} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 
 moment.locale('zh-CN')
 export default {
     data() {
         return {
             articleList: [],
-            activeIndex: ''
+            activeIndex: -1
         }
     },
     created() {
@@ -49,6 +49,7 @@ export default {
                     article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
                     this.articleList.unshift(article)
                     this.activeIndex++
+                    this.updateArticle(this.articleList[this.activeIndex])
                 })
                 .catch(err => alert(err))
         },
@@ -60,6 +61,48 @@ export default {
         ...mapMutations([
             'updateArticle'
         ])
+    },
+    computed: {
+        ...mapState(['title', 'tags', 'content', 'isPublished', 'toggleDelete'])
+    },
+    watch: {
+        title(val) {
+            if (this.articleList.length !== 0) {
+                this.articleList[this.activeIndex].title = val
+            }
+        },
+        tags(val) {
+            if (this.articleList.length !== 0) {
+                this.articleList[this.activeIndex].tags = val
+            }
+        },
+        content(val) {
+            if (this.articleList.length !== 0) {
+                this.articleList[this.activeIndex].content = val
+            }
+        },
+        isPublished(val) {
+            if (this.articleList.length !== 0) {
+                this.articleList[this.activeIndex].isPublished = val
+            }
+        },
+        toggleDelete(val) {
+            this.articleList.splice(this.activeIndex, 1)
+            if (this.activeIndex === this.articleList.length) {
+                this.activeIndex--
+            }
+            if (this.articleList.length !== 0) {
+                this.updateArticle(this.articleList[this.activeIndex])
+            }
+            else {
+                this.updateArticle({
+                    id: '',
+                    title: '',
+                    tags: '',
+                    content: ''
+                })
+            }
+        }
     }
 }
 </script>

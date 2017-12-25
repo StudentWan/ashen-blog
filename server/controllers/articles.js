@@ -24,10 +24,25 @@ class ArticleControllers {
         ctx.body = res
     }
 
-    async autoSaveArticle(ctx) {
-        // TODO, 更新文章
-        // 注意对摘要的划分
-        ctx.body = 1
+    async updateArticle(ctx) {
+        const id = ctx.params.id
+        const {title, tags, content, isPublished} = ctx.request.body
+        if (isPublished) {
+            const pattern = /<!-- more -->/i
+            if (pattern.test(content)) {
+                ctx.body = await Article.updateArticle(id, {title, tags, content, isPublished})
+            }
+            else {
+                ctx.throw(400, '发布的文章格式存在问题')
+            }
+        }
+        else {
+            ctx.body = await Article.updateArticle(id, {title, tags, content, isPublished})
+        }
+    }
+
+    async deleteArticle(ctx) {
+        ctx.body = await Article.deleteArticle(ctx.params.id)
     }
 }
 

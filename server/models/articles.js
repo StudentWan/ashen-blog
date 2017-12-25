@@ -18,8 +18,12 @@ class Articles {
         return await query(`SELECT * FROM ARTICLE WHERE id='${id}'`)
     }
 
-    async pushArticle(id, {title, tags, content}) {
-        return await query(`UPDATE ARTICLE SET title='${title}', tags='${tags.join(',')}', content='${content}', lastEditTime=NOW(),isPublished=1 WHERE id=${id}`)
+    async updateArticle(id, {title, tags, content, isPublished}) {
+        return await query(`UPDATE ARTICLE SET title='${title}', tags='${tags}', content='${content}', lastEditTime=NOW(), isPublished=${isPublished} WHERE id=${id}`)
+    }
+
+    async deleteArticle(id) {
+        return await query(`DELETE FROM ARTICLE WHERE id='${id}'`)
     }
 }
 

@@ -8,5 +8,7 @@ export default {
     id: '',
     title: '',
     tags: '',
-    content: ''
+    content: '',
+    isPublished: '',
+    toggleDelete: false
 }

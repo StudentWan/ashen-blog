@@ -15,9 +15,9 @@ const router = new Router()
 router.prefix(`/${baseApi}/${api}`)
 
 router.post('/', verify, ArticleController.addArticle)
-router.put('/', verify, ArticleController.autoSaveArticle)
+router.put('/:id', verify, ArticleController.updateArticle)
 router.get('/', ArticleController.getArticleList)
 router.get('/:id', ArticleController.getOneArticle)
-
+router.delete('/:id', verify, ArticleController.deleteArticle)
 
 module.exports = router

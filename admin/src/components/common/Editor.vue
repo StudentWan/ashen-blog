@@ -1,7 +1,7 @@
 <template>
     <div class="editor" @input="monitorChange($event)">
         <input type="text" class="title" id="title" v-model="title">
-        <div class="operate-bar">
+        <div class="operate-bar" v-show="id">
             <section class="tag-container">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-huiyuanbiaoqian"></use>
@@ -15,8 +15,8 @@
                 <span class="tag-add" @click="toggleInput" v-else>+</span>
             </section>
             <section class="btn-container">
-                <button id="delete" class="delete">删除文章</button>
-                <button id="submit" class="not-del">发布文章</button>
+                <button id="delete" class="delete" @click="deleteArticle">删除文章</button>
+                <button id="submit" class="not-del" @click="publishArticle">发布文章</button>
             </section>
         </div>
         <div class="content">
@@ -41,8 +41,9 @@ export default {
         return {
             inputNow: false,
             title: '',
-            tags: '',
-            simplemde: ''
+            tags: [],
+            simplemde: '',
+            isPublished: ''
         }
     },
     mounted() {
@@ -55,6 +56,7 @@ export default {
         this.title = this.$store.state.title
         this.tags = this.$store.getters.getTags
         this.simplemde.value(this.$store.state.content)
+        this.isPublished = this.$store.state.isPublished
     },
     methods: {
         toggleInput() {
@@ -71,16 +73,53 @@ export default {
             this.autoSave()
         },
         autoSave: debounce(function () {
-            this.$store.dispatch('saveArticle', {
-                id: this.id,
-                title: this.title,
-                tags: this.tags.join(','),
-                content: this.simplemde.value()
-            })
+            if (this.id) {
+                this.$store.dispatch('saveArticle', {
+                    id: this.id,
+                    title: this.title,
+                    tags: this.tags.join(','),
+                    content: this.simplemde.value(),
+                    isPublished: this.isPublished
+                })
+            }
         }, 1000),
         monitorChange(evt) {
             if (evt.target.id === 'title' || evt.target.tagName === 'TEXTAREA') {
                 this.autoSave()
+            }
+        },
+        deleteArticle() {
+            axios.delete(
+                `/api/v1/articles/${this.id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.ashenToken}`
+                    }
+                })
+                .then(res => {
+                    this.$store.commit('deleteArticle')
+                })
+                .catch(err => console.log(err))
+        },
+        publishArticle() {
+            if (!this.isPublished) {
+                axios.put(
+                    `/api/v1/articles/${this.id}`,
+                    {
+                        title: this.title,
+                        tags: this.tags.join(','),
+                        content: this.simplemde.value(),
+                        isPublished: 1
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.ashenToken}`
+                        }
+                    })
+                    .then(res => {
+                        this.$store.commit('updatePublishState')
+                    })
+                    .catch(err => alert('发布出错，可能是格式存在问题，如没有添加摘要分界：<!-- more -->'))
             }
         }
     },
@@ -94,6 +133,7 @@ export default {
             this.title = this.$store.state.title
             this.tags = this.$store.getters.getTags
             this.simplemde.value(this.$store.state.content)
+            this.isPublished = this.$store.state.isPublished
         }
     }
 }
