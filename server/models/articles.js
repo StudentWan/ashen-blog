@@ -4,6 +4,7 @@
  */
 
 import query from '../utils/query'
+import escape from '../utils/escape'
 
 class Articles {
     async addArticle() {
@@ -15,15 +16,15 @@ class Articles {
     }
 
     async getOneArticle(id) {
-        return await query(`SELECT * FROM ARTICLE WHERE id='${id}'`)
+        return await query(`SELECT * FROM ARTICLE WHERE id=${id}`)
     }
 
     async updateArticle(id, {title, tags, content, isPublished}) {
-        return await query(`UPDATE ARTICLE SET title='${title}', tags='${tags}', content='${content}', lastEditTime=NOW(), isPublished=${isPublished} WHERE id=${id}`)
+        return await query(escape`UPDATE ARTICLE SET title=${title}, tags=${tags}, content=${content}, lastEditTime=NOW(), isPublished=${isPublished} WHERE id=${id}`)
     }
 
     async deleteArticle(id) {
-        return await query(`DELETE FROM ARTICLE WHERE id='${id}'`)
+        return await query(escape`DELETE FROM ARTICLE WHERE id=${id}`)
     }
 }
 
