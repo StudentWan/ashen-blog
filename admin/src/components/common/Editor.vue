@@ -1,7 +1,7 @@
 <template>
     <div class="editor" @input="monitorChange($event)">
         <input type="text" class="title" id="title" v-model="title">
-        <div class="operate-bar" v-show="id">
+        <div class="operate-bar" v-show="id && $route.path === '/lists'">
             <section class="tag-container">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-huiyuanbiaoqian"></use>
@@ -19,6 +19,7 @@
                 <button id="submit" class="not-del" @click="publishArticle">发布文章</button>
             </section>
         </div>
+        <p class="tips" v-if="$route.path !== '/lists'">标签查询页面只能批量更改标签，修改的文章内容会自动保存。</p>
         <div class="content">
             <textarea></textarea>
         </div>
@@ -213,6 +214,10 @@ export default {
             cursor: pointer;
         }
     }
+}
+.tips {
+    color: $quote;
+    text-align: center;
 }
 .content {
     font-size: 1.6rem;

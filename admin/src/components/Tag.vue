@@ -7,17 +7,10 @@
                 <section class="tag">
                     <h5>标签</h5>
                     <ul class="tags" @click="chooseTag($event)">
-                        <li class="tag">JavaScript</li>
-                        <li class="tag">前端技术</li>
-                        <li class="tag">CSS</li>
-                        <li class="tag">BFC</li>
-                        <li class="tag">ES6</li>
-                        <li class="tag">Webpack</li>
-                        <li class="tag">Think</li>
-                        <li class="tag">HTML</li>
+                        <li class="tag" v-for="tag in tags">{{ tag }}</li>
                     </ul>
                 </section>
-                <article-list></article-list>
+                <article-list v-on:tags="getTags" ref="articleList"></article-list>
             </div>
             <editor></editor>
         </main>
@@ -37,11 +30,28 @@
             Editor,
             ArticleList
         },
+        data() {
+            return {
+                tags: [],
+                chosenTags: []
+            }
+        },
         methods: {
             chooseTag(evt) {
                 if (evt.target.tagName === 'LI') {
+                    const value = evt.target.innerHTML
+                    if (!evt.target.classList.contains('chosen')) {
+                        this.chosenTags.push(value)
+                    }
+                    else {
+                        this.chosenTags = this.chosenTags.filter(val => val !== value)
+                    }
+                    this.$refs.articleList.updateListByTags(this.chosenTags)
                     evt.target.classList.toggle('chosen')
                 }
+            },
+            getTags(tags) {
+                this.tags.push(...tags)
             }
         }
     }

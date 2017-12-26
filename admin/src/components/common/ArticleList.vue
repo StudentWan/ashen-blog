@@ -1,6 +1,6 @@
 <template>
     <ul class="list">
-        <li class="article" :class="{active: activeIndex === index, published: isPublished === 1}" v-for="{title, createTime, isPublished},index in articleList" @click="select(index)">
+        <li class="article" :class="{active: activeIndex === index, published: isPublished === 1}" v-for="{title, createTime, isPublished, isChosen},index in articleList" @click="select(index)" v-if="isChosen">
             <header>{{ title }}</header>
             <p>{{ createTime }}</p>
         </li>
@@ -29,12 +29,24 @@ export default {
             .then(res => {
                 for (let article of res.data) {
                     article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                    article.isChosen = true
                 }
                 this.articleList.push(...res.data)
                 // 如果有查询到文章，则将第一篇更新为正在编辑的文章
                 if (this.articleList.length !== 0) {
                     this.updateArticle(this.articleList[0])
                     this.activeIndex = 0
+                    const tags = []
+                    for (let article of this.articleList) {
+                        if (article.tags) {
+                            for (let tag of article.tags.split(',')) {
+                                if (tags.indexOf(tag) === -1) {
+                                    tags.push(tag)
+                                }
+                            }
+                        }
+                    }
+                    this.$emit('tags', tags)
                 }
             })
             .catch(err => {
@@ -47,11 +59,42 @@ export default {
                 .then(res => {
                     const article = res.data[0]
                     article.createTime = moment(article.createTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                    article.isChosen = true
                     this.articleList.unshift(article)
                     this.activeIndex++
                     this.updateArticle(this.articleList[this.activeIndex])
                 })
                 .catch(err => alert(err))
+        },
+        updateListByTags(chosenTags) {
+            if (chosenTags.length === 0) {
+                for (let article of this.articleList) {
+                    article.isChosen = true
+                }
+            } else {
+                for (let article of this.articleList) {
+                    let flag = false
+                    for (let tag of chosenTags) {
+                        if (article.tags.indexOf(tag) !== -1) {
+                            flag = true
+                        }
+                    }
+                    if (flag) {
+                        article.isChosen = true
+                    }
+                    else {
+                        article.isChosen = false
+                    }
+                }
+
+                for (let [index, article] of this.articleList.entries()) {
+                    if (article.isChosen) {
+                        this.activeIndex = index
+                        this.updateArticle(this.articleList[this.activeIndex])
+                        break
+                    }
+                }
+            }
         },
         select(index) {
             // 选择需要编辑的文章
