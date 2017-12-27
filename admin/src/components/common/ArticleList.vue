@@ -71,7 +71,8 @@ export default {
                 for (let article of this.articleList) {
                     article.isChosen = true
                 }
-            } else {
+            }
+            else {
                 for (let article of this.articleList) {
                     let flag = false
                     for (let tag of chosenTags) {

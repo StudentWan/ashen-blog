@@ -1,6 +1,6 @@
 <template>
-    <div class="editor" @input="monitorChange($event)">
-        <input type="text" class="title" id="title" v-model="title">
+    <div class="editor">
+        <input type="text" class="title" id="title" v-model="title" @input="autoSave">
         <div class="operate-bar" v-show="id && $route.path === '/lists'">
             <section class="tag-container">
                 <svg class="icon" aria-hidden="true">
@@ -58,6 +58,9 @@ export default {
         this.tags = this.$store.getters.getTags
         this.simplemde.value(this.$store.state.content)
         this.isPublished = this.$store.state.isPublished
+        this.simplemde.codemirror.on('change', () => {
+            this.autoSave()
+        })
     },
     methods: {
         toggleInput() {
@@ -100,7 +103,7 @@ export default {
                 .then(res => {
                     this.$store.commit('deleteArticle')
                 })
-                .catch(err => console.log(err))
+                .catch(err => alert(err))
         },
         publishArticle() {
             if (!this.isPublished) {
