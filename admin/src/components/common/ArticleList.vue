@@ -97,6 +97,56 @@ export default {
                 }
             }
         },
+        updateArticleTag(oldVal, newVal) {
+            for (let article of this.articleList) {
+                if (article.tags.length) {
+                    const tags = article.tags.split(',')
+                    const index = tags.indexOf(oldVal)
+                    if (index !== -1) {
+                        tags[index] = newVal
+                        article.tags = tags.join(',')
+                        axios.put(
+                            `/api/v1/tags/${article.id}`,
+                            {
+                                tags: article.tags
+                            },
+                            {
+                                headers: {
+                                    Authorization: `Bearer ${localStorage.ashenToken}`
+                                }
+                            })
+                            .catch(err => alert(err))
+                    }
+                }
+            }
+            // 防止更改了activeIndex的article，所以提交一个mutation
+            this.updateArticle(this.articleList[this.activeIndex])
+        },
+        deleteArticleTag(tag) {
+            for (let article of this.articleList) {
+                if (article.tags.length) {
+                    const tags = article.tags.split(',')
+                    const index = tags.indexOf(tag)
+                    if (index !== -1) {
+                        tags.splice(index, 1)
+                        article.tags = tags.join(',')
+                        axios.put(
+                            `/api/v1/tags/${article.id}`,
+                            {
+                                tags: article.tags
+                            },
+                            {
+                                headers: {
+                                    Authorization: `Bearer ${localStorage.ashenToken}`
+                                }
+                            })
+                            .catch(err => alert(err))
+                    }
+                }
+            }
+            // 防止更改了activeIndex的article，所以提交一个mutation
+            this.updateArticle(this.articleList[this.activeIndex])
+        },
         select(index) {
             // 选择需要编辑的文章
             this.activeIndex = index

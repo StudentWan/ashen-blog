@@ -116,3 +116,31 @@ a {
         }
     }
 }
+
+.tag, .tag-edit {
+    sup {
+        display: inline-block;
+        visibility: hidden;
+        cursor: pointer;
+        color: $white;
+        line-height: 10px;
+        text-align: center;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: $special;
+    }
+    &:hover > sup {
+        visibility: visible;
+    }
+}
+
+.tag-input {
+    margin-bottom: 5px;
+    width: 80px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid $special;
+    outline: none;
+    color: $word;
+}

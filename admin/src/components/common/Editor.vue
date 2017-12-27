@@ -175,37 +175,12 @@ export default {
             padding: 0;
             .tag {
                 margin-right: 10px;
-                /*text-decoration: underline;*/
                 color: $base;
                 position: relative;
                 &:last-child {
                     margin-right: 0px;
                 }
-                sup {
-                    display: inline-block;
-                    visibility: hidden;
-                    cursor: pointer;
-                    color: $white;
-                    line-height: 10px;
-                    text-align: center;
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    background: $special;
-                }
-                &:hover > sup {
-                    visibility: visible;
-                }
             }
-        }
-        .tag-input {
-            margin-right: 10px;
-            width: 80px;
-            background: none;
-            border: none;
-            border-bottom: 1px solid $special;
-            outline: none;
-            color: $word;
         }
         .tag-add {
             font: {
