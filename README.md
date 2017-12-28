@@ -6,47 +6,8 @@
 
 > 开发中...
 
-
-## Build Setup
-
-### Client端
-
-#### dev
-
-```bash
-npm run dev-client
-```
-
-#### build
-
-```bash
-npm run build-client
-```
-
-### Admin端
-
-#### dev
-
-```bash
-npm run dev-admin
-```
-
-#### build
-
-```bash
-npm run build-admin
-```
-
-### Server端
-
-#### dev
-
-```bash
-npm run dev-server
-```
-
-### api文档：
-
-[api文档](https://app.swaggerhub.com/apis/StudentWan/ashen-blog/1.0.0)
-
-
+[X] Admin 端
+[X] Server 端
+[] Client 端
+[] 项目部署
+[] README 更新
