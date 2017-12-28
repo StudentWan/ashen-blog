@@ -6,8 +6,8 @@
 
 > 开发中...
 
-[X] Admin 端
-[X] Server 端
-[] Client 端
-[] 项目部署
-[] README 更新
+- [x] Admin 端
+- [x] Server 端
+- [] Client 端
+- [] 项目部署
+- [] README 更新
