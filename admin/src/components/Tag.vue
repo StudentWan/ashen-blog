@@ -31,7 +31,7 @@
 <script>
 /**
  * @author {benyuwan@gmail.com}
- * @file
+ * @file 标签管理组件
  * */
 import ArticleList from '@/components/common/ArticleList'
 import Editor from '@/components/common/Editor'
