@@ -58,9 +58,8 @@ export default {
         this.tags = this.$store.getters.getTags
         this.simplemde.value(this.$store.state.content)
         this.isPublished = this.$store.state.isPublished
-        this.simplemde.codemirror.on('change', () => {
-            this.autoSave()
-        })
+        this.simplemde.codemirror.on('keyHandled', () => this.autoSave())
+        this.simplemde.codemirror.on('inputRead', () => this.autoSave())
     },
     methods: {
         toggleInput() {
