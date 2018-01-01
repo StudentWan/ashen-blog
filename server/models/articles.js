@@ -15,6 +15,14 @@ class Articles {
         return await query(`SELECT * FROM ARTICLE ORDER BY createTime DESC`)
     }
 
+    async getLimitArticles(offset, limit) {
+        return await query(escape`SELECT * FROM ARTICLE WHERE isPublished=1 ORDER BY lastEditTime DESC LIMIT ${parseInt(offset, 10)},${parseInt(limit, 10)}`)
+    }
+
+    async getPagination() {
+        return await query(`SELECT COUNT(*) FROM ARTICLE WHERE isPublished=1`)
+    }
+
     async getOneArticle(id) {
         return await query(`SELECT * FROM ARTICLE WHERE id=${id}`)
     }

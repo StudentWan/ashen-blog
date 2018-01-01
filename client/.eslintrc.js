@@ -9,6 +9,9 @@ module.exports = {
     env: {
         browser: true,
     },
+    globals: {
+        'axios': true
+    },
     extends: 'fecs-demo',
     // required to lint *.vue files
     plugins: [

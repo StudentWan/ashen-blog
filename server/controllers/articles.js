@@ -13,7 +13,23 @@ class ArticleControllers {
     }
 
     async getArticleList(ctx) {
-        ctx.body = await Article.getAllArticles()
+        const {isPublished = 0, offset = 0, limit = 0} = ctx.query
+        if (isPublished) {
+            const res = {
+                maxPage: '',
+                articles: ''
+            }
+            const promises = []
+            promises.push(Article.getPagination())
+            promises.push(Article.getLimitArticles(offset, limit))
+            const results = await Promise.all(promises)
+            res.maxPage = Math.ceil(results[0][0]['COUNT(*)'] / limit)
+            res.articles = results[1]
+            ctx.body = res
+        }
+        else {
+            ctx.body = await Article.getAllArticles()
+        }
     }
 
     async getOneArticle(ctx) {

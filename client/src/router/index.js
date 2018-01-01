@@ -41,7 +41,12 @@ const router = new Router({
         },
         {
             path: '*',
-            redirect: '/articles'
+            redirect: {
+                path: 'articles',
+                query: {
+                    page: 0
+                }
+            }
         }
     ]
 })

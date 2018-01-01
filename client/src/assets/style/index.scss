@@ -1,6 +1,5 @@
 @import "font";
 @import "highlight";
-
 html {
     font: {
         size: 62.5%;
@@ -39,11 +38,15 @@ h1 {
     font-size: 1.7em;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     color: $title;
 }
 
-h3:before, h4:before {
+h3:before,
+h4:before {
     content: "# ";
     color: $base;
 }
@@ -58,19 +61,15 @@ article {
         padding-bottom: .6em;
         border-bottom: 1px solid $special;
     }
-
     .time:before {
         content: "";
     }
-
     img {
         max-width: 100%;
     }
-
     a {
         color: $base;
     }
-
     blockquote {
         border-left: 3px solid $base;
         margin: 2em 0;
@@ -79,9 +78,37 @@ article {
     }
 }
 
+// slide-fade动画效果
+.slide-fade-enter-active {
+    transition: all 0.5s ease;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.5s cubic-bezier(1.0, 0.5, 0.8, 1.0);;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+    transform: translateX(235px);
+}
+
+.fade-enter-active {
+    transition: opacity .5s
+}
+
+.fade-leave-active {
+    transition: opacity 0s
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active in below version 2.1.8 */
+{
+    opacity: 0
+}
+
 @media screen and (max-width: 480px) {
     #main {
         margin-top: 4em;
     }
 }
-

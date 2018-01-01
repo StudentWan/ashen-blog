@@ -1,33 +1,59 @@
 <template>
-    <article>
-        <header>
-            <h1>DOM中外部资源的解析和优化</h1>
-            <h4 class="time">2017-10-26 16:49:00</h4>
-        </header>
-        <p v-html="parseMarkdown(content)"></p>
-    </article>
+    <transition name="fade">
+        <article>
+            <header>
+                <h1>{{ title }}</h1>
+                <h4 class="time">{{ lastEditTime }}</h4>
+                <h4>
+                    <span class="tag" v-for="tag in tags">{{ tag }}</span>
+                </h4>
+            </header>
+            <p v-html="parseMarkdown(content)"></p>
+        </article>
+    </transition>
 </template>
 
 <script>
-    /**
-     * @author {benyuwan@gmail.com}
-     * @file 特定文章组件
-     */
+/**
+ * @author {benyuwan@gmail.com}
+ * @file 特定文章组件
+ */
 
-    import parseMarkdown from '@/utils/parseMarkdown'
-    import zhengwen from '../Zhengwen'
+import parseMarkdown from '@/utils/parseMarkdown'
+import moment from 'moment'
 
-    export default {
-        data() {
-            return {
-                content: zhengwen.text
-            }
-        },
-        methods: {
-            parseMarkdown
+
+moment.locale('zh-CN')
+export default {
+    data() {
+        return {
+            title: '',
+            lastEditTime: '',
+            tags: '',
+            content: ''
         }
+    },
+    created() {
+        const id = this.$route.params.id
+        axios.get(`/api/v1/articles/${id}`)
+            .then(res => {
+                const data = res.data[0]
+                this.title = data.title
+                this.lastEditTime = moment(data.lastEditTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                this.content = data.content
+                this.tags = data.tags ? data.tags.split(',') : []
+            })
+            .catch(err => alert(err))
+    },
+    methods: {
+        parseMarkdown
     }
+}
 </script>
 
 <style lang="scss" scoped>
+.tag {
+    color: $quote;
+    margin-right: 1em;
+}
 </style>
