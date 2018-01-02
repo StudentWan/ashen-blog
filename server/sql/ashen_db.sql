@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.35)
 # Database: ashen_db
-# Generation Time: 2018-01-02 08:14:22 +0000
+# Generation Time: 2018-01-02 10:02:23 +0000
 # ************************************************************
 
 
@@ -52,7 +52,7 @@ CREATE TABLE `ARTICLE` (
   `title` varchar(255) NOT NULL DEFAULT '',
   `tags` varchar(255) NOT NULL DEFAULT '',
   `createTime` datetime NOT NULL,
-  `lastEditTime` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `publishTime` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   `content` longtext NOT NULL,
   `isPublished` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -61,7 +61,7 @@ CREATE TABLE `ARTICLE` (
 LOCK TABLES `ARTICLE` WRITE;
 /*!40000 ALTER TABLE `ARTICLE` DISABLE KEYS */;
 
-INSERT INTO `ARTICLE` (`id`, `title`, `tags`, `createTime`, `lastEditTime`, `content`, `isPublished`)
+INSERT INTO `ARTICLE` (`id`, `title`, `tags`, `createTime`, `publishTime`, `content`, `isPublished`)
 VALUES
 	(220,'欢迎来到Ashen Blog!','Blog','2018-01-02 16:05:45','2018-01-02 16:07:26','Enjoy ur self here!\n\n<!-- more -->\n\n```js\nconsole.log(\'Hello World!\')\n```',1);
 

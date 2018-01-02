@@ -7,7 +7,7 @@ import query from '../utils/query'
 
 class Introductions {
     async getIntroductions() {
-        return await query(`SELECT id,title,tags,lastEditTime FROM Article where isPublished=1 ORDER BY lastEditTime DESC`)
+        return await query(`SELECT id,title,tags,publishTime FROM Article where isPublished=1 ORDER BY publishTime DESC`)
     }
 }
 

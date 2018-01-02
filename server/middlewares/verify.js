@@ -15,7 +15,6 @@ export default async function (ctx, next) {
         await next()
     }
     catch (err) {
-        console.log(err.message)
         ctx.throw(401, err)
     }
 }

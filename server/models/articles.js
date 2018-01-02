@@ -8,7 +8,7 @@ import escape from '../utils/escape'
 
 class Articles {
     async addArticle() {
-        return await query(`INSERT INTO ARTICLE SET title='新文章',createTime=NOW(),lastEditTime=NOW()`)
+        return await query(`INSERT INTO ARTICLE SET title='新文章',createTime=NOW()`)
     }
 
     async getAllArticles() {
@@ -16,7 +16,7 @@ class Articles {
     }
 
     async getLimitArticles(offset, limit) {
-        return await query(escape`SELECT * FROM ARTICLE WHERE isPublished=1 ORDER BY lastEditTime DESC LIMIT ${parseInt(offset, 10)},${parseInt(limit, 10)}`)
+        return await query(escape`SELECT * FROM ARTICLE WHERE isPublished=1 ORDER BY publishTime DESC LIMIT ${parseInt(offset, 10)},${parseInt(limit, 10)}`)
     }
 
     async getPagination() {
@@ -28,7 +28,11 @@ class Articles {
     }
 
     async updateArticle(id, {title, tags, content, isPublished}) {
-        return await query(escape`UPDATE ARTICLE SET title=${title}, tags=${tags}, content=${content}, lastEditTime=NOW(), isPublished=${isPublished} WHERE id=${id}`)
+        return await query(escape`UPDATE ARTICLE SET title=${title}, tags=${tags}, content=${content} WHERE id=${id}`)
+    }
+
+    async publishArticle(id, {title, tags, content}) {
+        return await query(escape`UPDATE ARTICLE SET title=${title}, tags=${tags}, content=${content}, publishTime=NOW(), isPublished=1 WHERE id=${id}`)
     }
 
     async deleteArticle(id) {
