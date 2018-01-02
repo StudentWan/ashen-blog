@@ -8,6 +8,7 @@
 
 - [x] Admin 端
 - [x] Server 端
-- [ ] Client 端
+- [x] Client 端
+- [ ] 项目优化
 - [ ] 项目部署
 - [ ] README 更新
