@@ -1,12 +1,12 @@
 <template>
     <div class="articlelist-container">
         <div class="article-list">
-            <article v-for="{id, title, lastEditTime, content} in articles" :key="id">
+            <article v-for="{id, title, publishTime, content} in articles" :key="id">
                 <header>
                     <h2>
                         <router-link class="title" :to="'/articles/' + id">{{ title }}</router-link>
                     </h2>
-                    <h4 class="time">{{ lastEditTime }}</h4>
+                    <h4 class="time">{{ publishTime }}</h4>
                 </header>
                 <p class="abstract" v-html="parseMarkdown(content)"></p>
                 <footer>
@@ -48,7 +48,7 @@ export default {
             .then(res => {
                 const pattern = /<!-- more -->/i
                 for (let article of res.data.articles) {
-                    article.lastEditTime = moment(article.lastEditTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                    article.publishTime = moment(article.publishTime).format('YYYY年 MMM DD日 HH:mm:ss')
                     pattern.test(article.content)
                     article.content = RegExp['$`']
                 }
@@ -77,7 +77,7 @@ export default {
                 .then(res => {
                     const pattern = /<!-- more -->/i
                     for (let article of res.data.articles) {
-                        article.lastEditTime = moment(article.lastEditTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                        article.publishTime = moment(article.publishTime).format('YYYY年 MMM DD日 HH:mm:ss')
                         pattern.test(article.content)
                         article.content = RegExp['$`']
                     }

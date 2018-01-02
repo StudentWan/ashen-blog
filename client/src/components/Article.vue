@@ -2,7 +2,7 @@
     <article>
         <header>
             <h1>{{ title }}</h1>
-            <h4 class="time">{{ lastEditTime }}</h4>
+            <h4 class="time">{{ publishTime }}</h4>
             <h4>
                 <span class="tag" v-for="tag in tags">{{ tag }}</span>
             </h4>
@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             title: '',
-            lastEditTime: '',
+            publishTime: '',
             tags: '',
             content: ''
         }
@@ -37,7 +37,7 @@ export default {
             .then(res => {
                 const data = res.data[0]
                 this.title = data.title
-                this.lastEditTime = moment(data.lastEditTime).format('YYYY年 MMM DD日 HH:mm:ss')
+                this.publishTime = moment(data.publishTime).format('YYYY年 MMM DD日 HH:mm:ss')
                 this.content = data.content
                 this.tags = data.tags ? data.tags.split(',') : []
             })

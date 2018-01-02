@@ -6,7 +6,7 @@
 export async function saveArticle({commit, state}, {id, title, tags, content, isPublished}) {
     try {
         await axios.put(
-                `/api/v1/articles/${id}`,
+                `/api/v1/articles/update/${id}`,
                 {
                     title,
                     tags,
@@ -20,5 +20,7 @@ export async function saveArticle({commit, state}, {id, title, tags, content, is
                 })
         commit('updateArticle', {id, title, tags, content, isPublished})
     }
-    catch (err) {}
+    catch (err) {
+        console.error(err.response.data.error)
+    }
 }
