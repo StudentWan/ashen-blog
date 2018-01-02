@@ -7,7 +7,7 @@
                     <ul class="list" v-for="intro in introductions[year]">
                         <li>
                             <router-link :to="'/articles/' + intro.id">{{ intro.title }}</router-link>
-                            <span class="time"> {{ intro.lastEditTime }}</span>
+                            <span class="time"> {{ intro.publishTime }}</span>
                         </li>
                     </ul>
                 </section>
@@ -36,12 +36,12 @@ export default {
         axios.get('/api/v1/introductions')
             .then(res => {
                 for (let intro of res.data) {
-                    const introYear = moment(intro.lastEditTime).year()
+                    const introYear = moment(intro.publishTime).year()
                     if (this.years.indexOf(introYear) === -1) {
                         this.years.push(introYear)
                         this.introductions[introYear] = []
                     }
-                    intro.lastEditTime = moment(intro.lastEditTime).format('MM-DD')
+                    intro.publishTime = moment(intro.publishTime).format('MM-DD')
                     this.introductions[introYear].push(intro)
                 }
             })

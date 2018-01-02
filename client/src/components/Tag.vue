@@ -14,7 +14,7 @@
                 <ul>
                     <li v-for="intro in introductions[tag]">
                         <router-link :to="'/articles/' + intro.id">{{ intro.title }}</router-link>
-                        <span class="time"> {{ intro.lastEditTime }}</span>
+                        <span class="time"> {{ intro.publishTime }}</span>
                     </li>
                 </ul>
             </li>
@@ -43,7 +43,7 @@ export default {
             .then(res => {
                 for (let intro of res.data) {
                     intro.tags = intro.tags ? intro.tags.split(',') : []
-                    intro.lastEditTime = moment(intro.lastEditTime).format('MM-DD')
+                    intro.publishTime = moment(intro.publishTime).format('MM-DD')
                     for (let tag of intro.tags) {
                         if (this.tags.indexOf(tag) === -1) {
                             this.tags.push(tag)

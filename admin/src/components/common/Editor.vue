@@ -107,7 +107,7 @@ export default {
         publishArticle() {
             if (!this.isPublished) {
                 axios.put(
-                    `/api/v1/articles/${this.id}`,
+                    `/api/v1/articles/publish/${this.id}`,
                     {
                         title: this.title,
                         tags: this.tags.join(','),
@@ -122,7 +122,7 @@ export default {
                     .then(res => {
                         this.$store.commit('updatePublishState')
                     })
-                    .catch(err => alert('发布出错，可能是格式存在问题，如没有添加摘要分界：<!-- more -->'))
+                    .catch(err => alert(err.response.data.error))
             }
         }
     },
