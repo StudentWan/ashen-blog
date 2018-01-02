@@ -1,100 +1,21 @@
 <template>
-    <transition name="fade">
-        <div class="readinglist-container">
-            <h1>阅读列表</h1>
-            <table>
-                <tr>
-                    <th>书名</th>
-                    <th>作者</th>
-                    <th>ashenの评分</th>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="4.5"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="5"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="3"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="2"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="3.5"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="1.5"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="3.4"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="3.4"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="3.4"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="3.4"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="3.4"></star>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-1">雾都孤儿</td>
-                    <td class="col-2">狄更斯</td>
-                    <td class="col-3">
-                        <star score="3.4"></star>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </transition>
+    <div class="readinglist-container">
+        <h1>阅读列表</h1>
+        <table>
+            <tr>
+                <th>书名</th>
+                <th>作者</th>
+                <th>ashenの评分</th>
+            </tr>
+            <tr v-for="{name, author, score} in books">
+                <td class="col-1">{{ name }}</td>
+                <td class="col-2">{{ author }}</td>
+                <td class="col-3">
+                    <star :score="score"></star>
+                </td>
+            </tr>
+        </table>
+    </div>
 </template>
 
 <script>
@@ -108,6 +29,18 @@ import Star from '@/components/common/Star'
 export default {
     components: {
         Star
+    },
+    data() {
+        return {
+            books: ''
+        }
+    },
+    created() {
+        axios.get('/api/v1/books')
+            .then(res => {
+                this.books = res.data
+            })
+            .catch(err => alert(err))
     }
 }
 </script>

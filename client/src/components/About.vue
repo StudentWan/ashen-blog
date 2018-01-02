@@ -1,15 +1,8 @@
 <template>
-    <transition name="fade">
         <div class="about-container">
             <h1>关于我</h1>
-            <ul>
-                <li>Ashen One</li>
-                <li>UESTCer / BUPTer</li>
-                <li>前端空城师</li>
-                <li>陆止于此，海始于斯</li>
-            </ul>
+            <p v-html="parseMarkdown(about)"></p>
         </div>
-    </transition>
 </template>
 
 <script>
@@ -18,7 +11,23 @@
  * @file About me组件
  */
 
-export default {}
+import parseMarkdown from '@/utils/parseMarkdown'
+
+export default {
+    data() {
+        return {
+            about: ''
+        }
+    },
+    created() {
+        axios.get('/api/v1/briefs')
+            .then(res => this.about = res.data[0].content)
+            .catch(err => alert(err))
+    },
+    methods: {
+        parseMarkdown
+    }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

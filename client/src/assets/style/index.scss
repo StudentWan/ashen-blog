@@ -92,21 +92,6 @@ article {
     transform: translateX(235px);
 }
 
-.fade-enter-active {
-    transition: opacity .5s
-}
-
-.fade-leave-active {
-    transition: opacity 0s
-}
-
-.fade-enter,
-.fade-leave-to
-/* .fade-leave-active in below version 2.1.8 */
-{
-    opacity: 0
-}
-
 @media screen and (max-width: 480px) {
     #main {
         margin-top: 4em;

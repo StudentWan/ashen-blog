@@ -1,20 +1,18 @@
 <template>
     <div class="articlelist-container">
         <div class="article-list">
-            <transition-group name="fade" tag="div">
-                <article v-for="{id, title, lastEditTime, content} in articles" :key="id">
-                    <header>
-                        <h2>
-                            <router-link class="title" :to="'/articles/' + id">{{ title }}</router-link>
-                        </h2>
-                        <h4 class="time">{{ lastEditTime }}</h4>
-                    </header>
-                    <p class="abstract" v-html="parseMarkdown(content)"></p>
-                    <footer>
-                        <router-link class="read-more" :to="'/articles/' + id">... continue reading</router-link>
-                    </footer>
-                </article>
-            </transition-group>
+            <article v-for="{id, title, lastEditTime, content} in articles" :key="id">
+                <header>
+                    <h2>
+                        <router-link class="title" :to="'/articles/' + id">{{ title }}</router-link>
+                    </h2>
+                    <h4 class="time">{{ lastEditTime }}</h4>
+                </header>
+                <p class="abstract" v-html="parseMarkdown(content)"></p>
+                <footer>
+                    <router-link class="read-more" :to="'/articles/' + id">... continue reading</router-link>
+                </footer>
+            </article>
         </div>
         <div class="pagination">
             <span class="prev">←

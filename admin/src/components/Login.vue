@@ -12,7 +12,7 @@
             <input type="password" id="password" placeholder="Password" v-model="password">
             <button id="login" @click="login">登录</button>
         </section>
-        <footer>@Designed by Daniel Wan</footer>
+        <footer>Always.</footer>
     </div>
 </template>
 

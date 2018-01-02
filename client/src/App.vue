@@ -4,8 +4,8 @@
         <div id="main" @click="sweepMask">
             <router-view/>
         </div>
-        <footer>CopyRights滚粗，采用由Daniel Wan手工搭建的<a class="github" href="https://github.com/StudentWan/ashen-blog"
-                                                  target="_blank">Blog系统</a></footer>
+        <footer>本博客由<a class="github" href="https://github.com/StudentWan/ashen-blog"
+                                                  target="_blank">Ashen Blog系统</a>提供支持.</footer>
     </div>
 </template>
 

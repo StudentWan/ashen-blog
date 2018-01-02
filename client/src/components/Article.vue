@@ -1,16 +1,14 @@
 <template>
-    <transition name="fade">
-        <article>
-            <header>
-                <h1>{{ title }}</h1>
-                <h4 class="time">{{ lastEditTime }}</h4>
-                <h4>
-                    <span class="tag" v-for="tag in tags">{{ tag }}</span>
-                </h4>
-            </header>
-            <p v-html="parseMarkdown(content)"></p>
-        </article>
-    </transition>
+    <article>
+        <header>
+            <h1>{{ title }}</h1>
+            <h4 class="time">{{ lastEditTime }}</h4>
+            <h4>
+                <span class="tag" v-for="tag in tags">{{ tag }}</span>
+            </h4>
+        </header>
+        <p v-html="parseMarkdown(content)"></p>
+    </article>
 </template>
 
 <script>
