@@ -4,8 +4,7 @@
         <div id="main" @click="sweepMask">
             <router-view/>
         </div>
-        <footer>本博客由<a class="github" href="https://github.com/StudentWan/ashen-blog"
-                                                  target="_blank">Ashen Blog系统</a>提供支持.</footer>
+        <footer>本博客由<a class="github" href="https://github.com/StudentWan/ashen-blog" target="_blank">Ashen Blog系统</a>提供支持.</footer>
     </div>
 </template>
 
