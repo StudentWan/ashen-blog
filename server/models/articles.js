@@ -8,7 +8,7 @@ import escape from '../utils/escape'
 
 class Articles {
     async addArticle() {
-        return await query(`INSERT INTO ARTICLE SET title='新文章',createTime=NOW()`)
+        return await query(`INSERT INTO ARTICLE SET title='新文章',tags='',createTime=NOW(),publishTime=NOW(),content=''`)
     }
 
     async getAllArticles() {

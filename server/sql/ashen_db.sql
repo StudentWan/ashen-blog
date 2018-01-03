@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.35)
 # Database: ashen_db
-# Generation Time: 2018-01-03 12:51:02 +0000
+# Generation Time: 2018-01-03 13:21:50 +0000
 # ************************************************************
 
 
@@ -52,8 +52,8 @@ CREATE TABLE `ARTICLE` (
   `title` varchar(255) DEFAULT '',
   `tags` varchar(255) DEFAULT '',
   `createTime` datetime NOT NULL,
-  `publishTime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `content` longtext,
+  `publishTime` datetime NOT NULL,
+  `content` longtext NOT NULL,
   `isPublished` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
