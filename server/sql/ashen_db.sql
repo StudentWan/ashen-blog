@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.35)
 # Database: ashen_db
-# Generation Time: 2018-01-02 10:02:23 +0000
+# Generation Time: 2018-01-03 12:51:02 +0000
 # ************************************************************
 
 
@@ -49,11 +49,11 @@ DROP TABLE IF EXISTS `ARTICLE`;
 
 CREATE TABLE `ARTICLE` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL DEFAULT '',
-  `tags` varchar(255) NOT NULL DEFAULT '',
+  `title` varchar(255) DEFAULT '',
+  `tags` varchar(255) DEFAULT '',
   `createTime` datetime NOT NULL,
-  `publishTime` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `content` longtext NOT NULL,
+  `publishTime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `content` longtext,
   `isPublished` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
