@@ -12,14 +12,6 @@ import Tag from '@/components/Tag'
 import ReadingList from '@/components/ReadingList'
 import About from '@/components/About'
 
-// const ArticleList = r => require.ensure([], () => r(require('@/components/ArticleList')), 'group-a')
-// const Article = r => require.ensure([], () => r(require('@/components/Article')), 'group-b')
-// const Archive = r => require.ensure([], () => r(require('@/components/Archive')), 'group-c')
-// const Tag = r => require.ensure([], () => r(require('@/components/Tag')), 'group-d')
-// const ReadingList = r => require.ensure([], () => r(require('@/components/ReadingList')), 'group-e')
-// const About = r => require.ensure([], () => r(require('@/components/About')), 'group-f')
-
-
 Vue.use(Router)
 
 const router = new Router({

@@ -17,3 +17,7 @@ package-lock.json*
 
 client/dist/
 admin/dist/
+
+client/.eslintrc.js
+admin/.eslintrc.js
+server/.eslintrc.js
