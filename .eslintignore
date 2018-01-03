@@ -1,7 +1,5 @@
 client/build/*.js
 client/config/*.js
-client/src/Zhaiyao.js
-client/src/Zhengwen.js
 admin/build/*.js
 admin/config/*.js
 admin/src/assets/*
