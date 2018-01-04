@@ -20,7 +20,7 @@ Server端作为RESTful API服务器，负责与Client/Admin端进行数据通信
 
 所以demo先上IP地址吧：
 
-(DEMO)[http://58.87.77.212]
+[DEMO](http://58.87.77.212)
 
 ![client](http://p20zi8dae.bkt.clouddn.com/blog-client.png)
 客户端界面
