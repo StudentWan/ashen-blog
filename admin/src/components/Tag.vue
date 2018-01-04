@@ -66,17 +66,22 @@ export default {
         changeTag(evt, i) {
             const oldVal = this.chosenTags[i]
             const newVal = evt.target.value
+            if (!newVal) {
+                alert('请直接删除Tag!')
+                evt.target.value = oldVal
+                return
+            }
+            const tagIndex = this.tags.indexOf(oldVal)
             // 获取tags中的index, 使用未修改的tag值
             if (this.tags.indexOf(newVal) !== -1) {
-                alert('不能修改为已有的tag值！')
-                evt.target.value = oldVal
+                this.chosenTags.splice(i, 1)
+                this.tags.splice(tagIndex, 1)
             }
             else {
-                const tagIndex = this.tags.indexOf(oldVal)
-                this.$refs.articleList.updateArticleTag(oldVal, newVal)
                 this.chosenTags.splice(i, 1, newVal)
                 this.tags.splice(tagIndex, 1, newVal)
             }
+            this.$refs.articleList.updateArticleTag(oldVal, newVal, this.chosenTags)
         },
         deleteTag(tag, i) {
             const tagIndex = this.tags.indexOf(tag)

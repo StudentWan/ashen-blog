@@ -97,25 +97,33 @@ export default {
                 }
             }
         },
-        updateArticleTag(oldVal, newVal) {
+        updateArticleTag(oldVal, newVal, chosenTags) {
             for (let article of this.articleList) {
                 if (article.tags.length) {
                     const tags = article.tags.split(',')
                     const index = tags.indexOf(oldVal)
                     if (index !== -1) {
-                        tags[index] = newVal
-                        article.tags = tags.join(',')
-                        axios.put(
-                            `/api/v1/tags/${article.id}`,
-                            {
-                                tags: article.tags
-                            },
-                            {
-                                headers: {
-                                    Authorization: `Bearer ${localStorage.ashenToken}`
-                                }
-                            })
-                            .catch(err => alert(err))
+                        const newIndex = tags.indexOf(newVal)
+                        // 如果新值在该文章中已经有了，则直接删除旧值，否则将旧值修改为新值
+                        if (newIndex === -1) {
+                            tags[index] = newVal
+                            article.tags = tags.join(',')
+                            axios.put(
+                                `/api/v1/tags/${article.id}`,
+                                {
+                                    tags: article.tags
+                                },
+                                {
+                                    headers: {
+                                        Authorization: `Bearer ${localStorage.ashenToken}`
+                                    }
+                                })
+                                .catch(err => alert(err))
+                        }
+                        else {
+                            this.deleteArticleTag(oldVal)
+                        }
+                        this.updateListByTags(chosenTags)
                     }
                 }
             }
@@ -128,19 +136,24 @@ export default {
                     const tags = article.tags.split(',')
                     const index = tags.indexOf(tag)
                     if (index !== -1) {
-                        tags.splice(index, 1)
-                        article.tags = tags.join(',')
-                        axios.put(
-                            `/api/v1/tags/${article.id}`,
-                            {
-                                tags: article.tags
-                            },
-                            {
-                                headers: {
-                                    Authorization: `Bearer ${localStorage.ashenToken}`
-                                }
-                            })
-                            .catch(err => alert(err))
+                        if (tags.length === 1 && article.isPublished === 1) {
+                            console.error('已发布文章请至少保持一个tag!')
+                        }
+                        else {
+                            tags.splice(index, 1)
+                            article.tags = tags.join(',')
+                            axios.put(
+                                `/api/v1/tags/${article.id}`,
+                                {
+                                    tags: article.tags
+                                },
+                                {
+                                    headers: {
+                                        Authorization: `Bearer ${localStorage.ashenToken}`
+                                    }
+                                })
+                                .catch(err => alert(err))
+                        }
                     }
                 }
             }
