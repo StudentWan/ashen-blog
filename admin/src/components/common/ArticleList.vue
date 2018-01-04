@@ -98,7 +98,7 @@ export default {
             }
         },
         updateArticleTag(oldVal, newVal, chosenTags) {
-            for (let article of this.articleList) {
+            for (let [i, article] of this.articleList.entries()) {
                 if (article.tags.length) {
                     const tags = article.tags.split(',')
                     const index = tags.indexOf(oldVal)
@@ -121,7 +121,7 @@ export default {
                                 .catch(err => alert(err))
                         }
                         else {
-                            this.deleteArticleTag(oldVal)
+                            this.deleteSpecArticleTag(oldVal, i)
                         }
                         this.updateListByTags(chosenTags)
                     }
@@ -129,6 +129,24 @@ export default {
             }
             // 防止更改了activeIndex的article，所以提交一个mutation
             this.updateArticle(this.articleList[this.activeIndex])
+        },
+        deleteSpecArticleTag(tag, i) {
+            const article = this.articleList[i]
+            article.tags = article.tags.split(',')
+            const index = article.tags.indexOf(tag)
+            article.tags.splice(index, 1)
+            article.tags = article.tags.join(',')
+            axios.put(
+                `/api/v1/tags/${article.id}`,
+                {
+                    tags: article.tags
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.ashenToken}`
+                    }
+                })
+                .catch(err => alert(err))
         },
         deleteArticleTag(tag) {
             for (let article of this.articleList) {
