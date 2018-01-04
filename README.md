@@ -75,7 +75,7 @@ Admin端管理博客，目前支持：Markdown编写博客、快捷按键及Tool
 
 `初始密码：1qaz@wsx`
 
-使用Simplemde实现Markdown编写，支持快捷键和自动保存，具体快捷键请查看相关文档：[simple-markdown-editor](https://github.com/sparksuite/simplemde-markdown-editor)
+使用Simplemde实现Markdown编写，支持快捷键和自动保存，具体快捷键请查看相关文档：[simple-markdown-editor](https://github.com/sparksuite/simplemde-markdown-editor)
 
 利用函数去抖及axios实现文章的自动保存。
 
