@@ -4,7 +4,7 @@
 
 > Ashen Blog 管理系统，采用 Koa2 和 Vue2 完成开发，帮助你轻松的搭建自己的博客。
 
-### 介绍
+### 介绍
 
 Ashen Blog系统遵循ES6+的代码标准，前端采用了Vue 2.x作为开发框架，后端采用了Koa 2.x作为RESTful API 服务器开发框架，是一款的前后端分离并利用axios进行数据通信的单页面应用。
 
@@ -16,7 +16,7 @@ Server端作为RESTful API服务器，负责与Client/Admin端进行数据通信
 
 数据持久化方面使用Mysql作为数据库。
 
-### 快速使用
+### 快速使用
 
 下载好项目以后，首先安装依赖：
 
@@ -24,13 +24,13 @@ Server端作为RESTful API服务器，负责与Client/Admin端进行数据通信
 npm install
 ```
 
-需要修改config文件：
+需要修改config文件：
 
 ```bash
 # 修改baseUrl为你的服务器地址
 vim admin/src/main.js
 
-# 修改baseUrl为你的服务器地址
+# 修改baseUrl为你的服务器地址
 vim client/src/main.js
 
 # 修改数据库配置db为你的数据库配置
