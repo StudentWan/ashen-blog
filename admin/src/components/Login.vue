@@ -9,7 +9,7 @@
                 <span>/ Login</span>
             </span>
             <input type="text" id="user" placeholder="Username" v-model="username">
-            <input type="password" id="password" placeholder="Password" v-model="password">
+            <input type="password" id="password" placeholder="Password" v-model="password" @keyup.enter="login">
             <button id="login" @click="login">登录</button>
         </section>
         <footer>Always.</footer>
