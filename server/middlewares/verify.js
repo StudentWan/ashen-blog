@@ -4,17 +4,20 @@
  */
 
 import jwt from 'jsonwebtoken'
+import thenifyAll from 'thenify-all'
 import {secret} from '../config'
+
+thenifyAll(jwt, {}, ['verify'])
 
 export default async function (ctx, next) {
     // 同步验证
     const auth = ctx.get('Authorization')
     const token = auth.split(' ')[1]
     try {
-        jwt.verify(token, secret)
-        await next()
+        await jwt.verify(token, secret)
     }
     catch (err) {
         ctx.throw(401, err)
     }
+    await next()
 }

@@ -34,6 +34,7 @@
     "moment": "^2.19.4",
     "mysql": "^2.15.0",
     "simplemde": "^1.11.2",
+    "thenify-all": "^1.6.0",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
     "vue-simplemde": "^0.4.6",
