@@ -17,3 +17,5 @@ package-lock.json*
 
 client/dist/
 admin/dist/
+
+client/test/unit/coverage/*

@@ -10,7 +10,6 @@ import {secret} from '../config'
 thenifyAll(jwt, {}, ['verify'])
 
 export default async function (ctx, next) {
-    // 同步验证
     const auth = ctx.get('Authorization')
     const token = auth.split(' ')[1]
     try {
