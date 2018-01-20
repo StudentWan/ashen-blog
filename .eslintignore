@@ -1,7 +1,7 @@
 client/build/*.js
 client/config/*.js
-client/test/unit/*.js
-admin/test/unit/*.js
+client/test/unit/*
+admin/test/unit/*
 admin/build/*.js
 admin/config/*.js
 admin/src/assets/*
