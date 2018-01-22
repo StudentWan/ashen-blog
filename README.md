@@ -1,5 +1,7 @@
 # Ashen Blog
 
+> v1.1
+
 > Ashen Blog Management System, developed with Koa2 and Vue2, easily build your own blog.
 
 > Ashen Blog 管理系统，采用 Koa2 和 Vue2 完成开发，帮助你轻松的搭建自己的博客。
@@ -113,11 +115,15 @@ Server端作为RESTful API服务器，负责与Client/Admin端进行数据通信
 
 欢迎提交issue。
 
-欢迎提交PR，请下载dev分支，在其中的编码规范上修改代码。
+欢迎提交pr，请fork dev分支，并在其上编写代码。
 
 非常感谢！
 
 ### 致谢
 
 [Chuck Liu的Kov-Blog](https://github.com/Ma63d/kov-blog)
+
+### License
+
+[MIT](https://opensource.org/licenses/MIT)
 
