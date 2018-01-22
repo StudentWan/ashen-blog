@@ -15,10 +15,10 @@
             </article>
         </div>
         <div class="pagination">
-            <span class="prev" :class="{'hide': this.$route.query.page === 0}">←
+            <span class="prev" :class="{'hide': parseInt(this.$route.query.page, 10) === 0}">←
                 <a @click="prevPage">上一页</a>
             </span>
-            <span class="next" :class="{'hide': this.$route.query.page === this.maxPage - 1}">
+            <span class="next" :class="{'hide': parseInt(this.$route.query.page, 10) === this.maxPage - 1}">
                 <a @click="nextPage">下一页</a>→</span>
         </div>
     </div>
@@ -43,6 +43,7 @@
             }
         },
         created() {
+            console.log(typeof this.$route.query.page)
             this.offset = this.$route.query.page * 5
             axios.get(`/api/v1/articles?isPublished=1&offset=${this.offset}&limit=5`)
                 .then(res => {
