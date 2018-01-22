@@ -3,5 +3,4 @@ client/config/*.js
 admin/build/*.js
 admin/config/*.js
 admin/src/assets/*
-admin/src/test.js
 admin/src/main.js

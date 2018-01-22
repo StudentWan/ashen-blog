@@ -22,13 +22,9 @@ a {
     color: $word;
 }
 
-#app {
-    // height: 100%;
-}
-
 #main {
     font-size: 1.4rem;
-    padding: 1em 0 1em 0;
+    padding: .5em 0 1em 0;
     width: 95%;
     max-width: 850px;
     margin: auto;
@@ -92,8 +88,19 @@ article {
     transform: translateX(235px);
 }
 
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .2s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+
+//.fade-enter-active {
+//    transition: opacity 0s;
+//}
+
 @media screen and (max-width: 480px) {
     #main {
-        margin-top: 4em;
+        margin-top: 4.7em;
     }
 }

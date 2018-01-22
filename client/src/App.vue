@@ -2,9 +2,12 @@
     <div id="app">
         <header-nav :maskFlag="maskFlag"></header-nav>
         <div id="main" @click="sweepMask">
-            <router-view/>
+            <transition mode="out-in" name="fade" @before-enter="beforeEnter" @after-enter="afterEnter">
+                <router-view/>
+            </transition>
         </div>
-        <footer>本博客由<a class="github" href="https://github.com/StudentWan/ashen-blog" target="_blank">Ashen Blog系统</a>提供支持.</footer>
+        <footer id="app-footer">本博客由<a class="github" href="https://github.com/StudentWan/ashen-blog" target="_blank">Ashen Blog系统</a>提供支持.
+        </footer>
     </div>
 </template>
 
@@ -29,6 +32,14 @@
         methods: {
             sweepMask() {
                 this.maskFlag = !this.maskFlag
+            },
+            afterEnter() {
+                const footer = document.getElementById('app-footer')
+                footer.className = 'solid'
+            },
+            beforeEnter() {
+                const footer = document.getElementById('app-footer')
+                footer.className = 'trans'
             }
         }
     }
@@ -48,5 +59,13 @@
         .github {
             color: $base;
         }
+    }
+
+    .trans {
+        opacity: 0;
+    }
+
+    .solid {
+        opacity: 1;
     }
 </style>
