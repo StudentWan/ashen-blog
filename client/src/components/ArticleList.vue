@@ -43,7 +43,6 @@
             }
         },
         created() {
-            console.log(typeof this.$route.query.page)
             this.offset = this.$route.query.page * 5
             axios.get(`/api/v1/articles?isPublished=1&offset=${this.offset}&limit=5`)
                 .then(res => {
