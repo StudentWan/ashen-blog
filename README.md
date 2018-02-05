@@ -20,7 +20,7 @@ Server端作为RESTful API服务器，负责与Client/Admin端进行数据通信
 
 demo地址：
 
-[无火的余灰](http://58.87.77.212)
+[无火的余灰](http://ashenone.cn)
 
 ![client](http://p20zi8dae.bkt.clouddn.com/blog-client.png)
 客户端界面
