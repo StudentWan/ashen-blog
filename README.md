@@ -113,7 +113,7 @@ Server端作为RESTful API服务器，负责与Client/Admin端进行数据通信
 
 欢迎提交issue。
 
-欢迎提交pr，请fork dev分支，并在其上编写代码。
+欢迎提交pr，请fork dev分支，遵循其中的编码规范，并在其上编写代码。
 
 非常感谢！
 
